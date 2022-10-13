@@ -17,6 +17,8 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [],
+
   presets: [
     [
       'classic',
@@ -33,11 +35,18 @@ const config = {
     ],
   ],
 
+  scripts: [
+    {
+      src: '/js/loadLinks.js',
+      async: false
+    }
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Axon Documentation',
+        title: 'Axon',
         logo: {
           alt: 'Axon',
           src: 'img/axon.png',
@@ -48,47 +57,25 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
         links: [
           {
-            title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
+                html: `
+                <img style="width: 50px; height: 50px" src="/img/axon.png" alt="Axon"/>
+                <span style="position: absolute; padding: 0.5rem; margin: 0.5rem">axon.org</span>
+                `
+              }
+            ]
           },
           {
-            title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                html: `<div id="footer-links-placeholder">
+                </div>`,
+              }
             ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+          }
         ],
         copyright: 'This website is maintained by axon.',
       },
