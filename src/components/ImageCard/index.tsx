@@ -6,15 +6,16 @@ import ThemedImage from '@theme/ThemedImage';
 import {Property} from "csstype";
 
 interface Props {
-    title: string;
+    title: string | JSX.Element;
     light: string;
     dark: string;
     url: string;
-    description: string;
-    imagePosition: 'top' | 'bottom' | 'left' | 'right'
+    description: string | JSX.Element;
+    imagePosition: 'top' | 'bottom' | 'left' | 'right';
+    alt?: string;
 }
 
-export default function ImageCard({title, light, dark, url, description, imagePosition = 'bottom'}: Props) {
+export default function ImageCard({title, light, dark, url, description, imagePosition = 'bottom', alt}: Props) {
     const flexDirection = {
         'top': 'column-reverse',
         'bottom': 'column',
@@ -23,21 +24,25 @@ export default function ImageCard({title, light, dark, url, description, imagePo
     }[imagePosition]! as Property.FlexDirection;
 
     const Text = () =>
-        <div className="card__body" style={{paddingBottom: '16px', minHeight: '103.81px'}}>
+        <div className="card__body" style={{paddingBottom: '16px', minHeight: '132px'}}>
             <Link to={url}>
-                <h3>{title}</h3>
+                {typeof (title) === 'string' ?
+                    <strong>{title}</strong> :
+                    title
+                }
             </Link>
             <p>
-                <Translate>
-                    {description}
-                </Translate>
+                {typeof (description) === 'string' ?
+                    <Translate>{description}</Translate> :
+                    description
+                }
             </p>
         </div>
     const Image = () =>
         <div className="card__body" style={{paddingTop: 0, minWidth: '91px', display: 'flex', alignItems: 'flex-end'}}>
             <Link to={url}>
                 <ThemedImage
-                    alt={title}
+                    alt={alt || title as string}
                     sources={{light, dark}}
                 />
             </Link>

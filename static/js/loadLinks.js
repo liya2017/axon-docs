@@ -3,19 +3,19 @@
         const theme = document.documentElement.getAttribute('data-theme');
         const footerLinksPlaceholder = document.getElementById('footer-links-placeholder');
         footerLinksPlaceholder.innerHTML = `
-                <a href="https://nervos.org">
+                <a href="#">
                     <img src="/img/github_${theme}.svg" alt="GitHub"/>
                 </a>
-                <a href="https://nervos.org">
+                <a href="#">
                     <img src="/img/twitter_${theme}.svg" alt="Twitter"/>
                 </a>
-                <a href="https://nervos.org">
+                <a href="#">
                     <img src="/img/telegram_${theme}.svg" alt="Telegram"/>
                 </a>
-                <a href="https://nervos.org">
+                <a href="#">
                     <img src="/img/linkedin_${theme}.svg" alt="LinkedIn"/>
                 </a>
-                <a href="https://nervos.org">
+                <a href="#">
                     <img src="/img/medium_${theme}.svg" alt="Medium"/>
                 </a>
                 `;

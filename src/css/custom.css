@@ -9,7 +9,7 @@
   --ifm-color-grey: #666666;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  font-size: 0.8em;
+  --doc-sidebar-width: 318px !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -25,8 +25,56 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* font-size */
+body {
+  font-family: Montserrat, serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+.subtitle {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+strong {
+  font-size: 24px;
+}
+
+em {
+  font-size: 18px;
+}
+
+.smail {
+  font-size: 14px;
+}
+
+.x-smail {
+  font-size: 13px;
+}
+
+
 main {
-  margin-left: 4rem;
+  margin-left: 56px;
+}
+
+div:has(>.theme-doc-toc-desktop) {
+  margin-left: 56px;
+}
+
+.theme-doc-toc-desktop {
+  width: 249px;
 }
 
 .text-link h4 {
@@ -43,7 +91,7 @@ main {
 }
 
 #footer-links-placeholder a {
-  padding: 1rem;
+  padding: .6rem;
 }
 
 footer .container-fluid {
@@ -52,5 +100,5 @@ footer .container-fluid {
 
 footer .footer__bottom {
   position: relative;
-  bottom: 5rem;
+  bottom: 4rem;
 }

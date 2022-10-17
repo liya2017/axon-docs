@@ -1,6 +1,7 @@
 {
   "label": "Related Topics",
   "position": 4,
+  "collapsed": false,
   "link": {
     "type": "doc",
     "id": "index"
