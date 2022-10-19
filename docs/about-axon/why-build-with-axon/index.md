@@ -1,13 +1,12 @@
 ---
 sidebar_position: 1
+title: Why Build With Axon
 ---
-
-# Why Build With Axon
 
 Axon is a scalable and interoperable Ethereum blockchain, 
 built on Proof-of-Stake with fast-finality. This is the documentation.
 
-## Getting Started
+### Getting Started
 ---
 
 Read all about Axon or dive straight into the code with guides.
@@ -35,9 +34,31 @@ It is the only way to recover your account if you ever forget your password.
 # <24 word mnemonic phrase>
 ```
 
-## Getting Started
+### Getting Started
 ---
 
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
+Read all about Axon or dive straight into the code with guides.
 Read all about Axon or dive straight into the code with guides.
 Read all about Axon or dive straight into the code with guides.
 Read all about Axon or dive straight into the code with guides.

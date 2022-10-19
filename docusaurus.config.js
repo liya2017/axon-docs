@@ -45,11 +45,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: "NN0YKWI8GH",
+        apiKey: "e14bce8f06788d44771935b54870a302",
+        indexName: "axonweb3",
+      },
       navbar: {
-        title: 'Axon',
+        title: '',
         logo: {
           alt: 'Axon',
-          src: 'img/axon.png',
+          src: 'img/logo_light.png',
+          srcDark: 'img/logo_dark.png',
           href: 'https://www.nervos.org/axon',
         },
         items: [
@@ -62,8 +68,8 @@ const config = {
             items: [
               {
                 html: `
-                <img style="width: 50px; height: 50px" src="/img/axon.png" alt="Axon"/>
-                <span style="position: absolute; padding: 0.5rem; margin: 0.5rem">axon.org</span>
+                <img id="footer-logo" src="/img/logo_light.png" alt="Axon"/>
+                <a style="position: absolute; padding: 8px 8px 8px 28px" href="mailto:axon@axonweb3.io">axon@axonweb3.io</a>
                 `
               }
             ]

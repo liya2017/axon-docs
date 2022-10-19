@@ -2,47 +2,50 @@
 slug: /
 title: About Axon
 sidebar_position: 1
+hide_title: true
+pagination_next: null
+hide_table_of_contents: true
 ---
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Axon Documentation
+### Axon Documentation
 
 Axon is a scalable and interoperable Ethereum blockchain, built on Proof-of-Stake with fast-finality.
 
-## Getting Started
+#### Getting Started
 
 Read all about Axon or dive straight into the code with guides.
 
 import ImageCard from '@site/src/components/ImageCard';
 
-<div className="row">
-    <div className="col col--6 margin-bottom--lg">
+<div className="row developers-contributers">
+    <div className="col col--6">
         <ImageCard
-            title={<div className="subtitle">Developers</div>}
+            title={<strong>Developers</strong>}
             alt="Developers"
             light={useBaseUrl('/img/developers_light.svg')}
             dark={useBaseUrl('/img/developers_dark.svg')}
             url="#"
-            description="Find key information about developing on Axon."
+            description={<p>Find key information about developing on Axon.</p>}
         />
     </div>
-    <div className="col col--6 margin-bottom--lg">
+    <div className="col col--6">
         <ImageCard
-            title={<div className="subtitle">Contributers</div>}
+            title={<strong>Contributers</strong>}
             alt="Contributers"
             light={useBaseUrl('/img/contributers_light.svg')}
             dark={useBaseUrl('/img/contributers_dark.svg')}
             url="#"
-            description="Everything you need to know as an Axon contributer."
+            description={<p>Everything you need to know as an Axon contributer.</p>}
         />
     </div>
 </div>
 
-## Explore Axon
+#### Explore Axon
 
 Get familiar with Axon and explore its main concepts.
 
-<div className="row">
+<div className="row explore-axon">
     <div className="col col--6">
         <ImageCard
             title="Introduction"
@@ -65,11 +68,11 @@ Get familiar with Axon and explore its main concepts.
     </div>
 </div>
 
-## Explore the stack
+#### Explore the stack
 
 Check out the docs for the various parts of the Axon stack
 
-<div className="row">
+<div className="row explore-the-stack">
     <div className="col col--4">
         <ImageCard
             title="Cosmos SDK"
@@ -102,15 +105,15 @@ Check out the docs for the various parts of the Axon stack
     </div>
 </div>
 
-## Feedback & Contribute
+#### Feedback & Contribute
 
-<div className="row">
+<div className="row feedback-contribute">
     <div className="col col--4">
         <ImageCard
             title="Community"
             light={useBaseUrl('/img/community_light.svg')}
             dark={useBaseUrl('/img/community_dark.svg')}
-            url="#"
+            url=""
             description="Under construction, please wait"
             imagePosition="right"
         />
@@ -141,18 +144,18 @@ import Link from '@docusaurus/Link';
 
 <div className="row text-link">
     <div className="col col--4">
-        <h4>ECOSYSTEM DOCUMENTATION</h4>
+        <span>ECOSYSTEM DOCUMENTATION</span>
         <Link to="#">Cosmos SDK Docs</Link>
         <Link to="#">Ethereum Docs</Link>
         <Link to="#">Tendermint Core Docs</Link>
     </div>
     <div className="col col--4">
-        <h4>COMMUNITY</h4>
+        <span>COMMUNITY</span>
         <Link to="#">Axon Discord Community</Link>
         <Link to="#">Axon Commonwealth Forum</Link>
     </div>
     <div className="col col--4">
-        <h4>Axon</h4>
+        <span>Axon</span>
         <Link to="#">Jobs at Axon</Link>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import Translate from '@docusaurus/Translate';
 import Link from '@docusaurus/Link';
 import ThemedImage from '@theme/ThemedImage';
 import {Property} from "csstype";
@@ -24,22 +23,20 @@ export default function ImageCard({title, light, dark, url, description, imagePo
     }[imagePosition]! as Property.FlexDirection;
 
     const Text = () =>
-        <div className="card__body" style={{paddingBottom: '16px', minHeight: '132px'}}>
+        <div className="card__body text" style={{padding: '0 28px 16px 28px'}}>
             <Link to={url}>
                 {typeof (title) === 'string' ?
-                    <strong>{title}</strong> :
+                    <em>{title}</em> :
                     title
                 }
             </Link>
-            <p>
-                {typeof (description) === 'string' ?
-                    <Translate>{description}</Translate> :
-                    description
-                }
-            </p>
+            {typeof (description) === 'string' ?
+                <p style={{color: '#666666', fontSize: '13px'}}>{description}</p> :
+                description
+            }
         </div>
     const Image = () =>
-        <div className="card__body" style={{paddingTop: 0, minWidth: '91px', display: 'flex', alignItems: 'flex-end'}}>
+        <div className="card__body image" style={{display: 'flex', alignItems: 'flex-end'}}>
             <Link to={url}>
                 <ThemedImage
                     alt={alt || title as string}
@@ -49,7 +46,7 @@ export default function ImageCard({title, light, dark, url, description, imagePo
         </div>
 
     return (
-        <div className={clsx('card')} style={{flexDirection}}>
+        <div className={clsx('card')} style={{flexDirection, height: '100%'}}>
             <Text/>
             <Image/>
         </div>

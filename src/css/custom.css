@@ -7,9 +7,21 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-color-grey: #666666;
-  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: Montserrat;
+  --ifm-font-size-base: 14px;
+  --ifm-h1-font-size: 48px;
+  --ifm-h2-font-size: 40px;
+  --ifm-h3-font-size: 32px;
+  --ifm-h4-font-size: 28px;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --doc-sidebar-width: 318px !important;
+  --ifm-footer-padding-vertical: 0;
+  --axon-sidebar-background-color: #f8f9fa;
+  --ifm-toc-border-color: #ededed !important;
+  --ifm-footer-background-color: #f2f2f3;
+  --docsearch-searchbox-background: #f3f3f3 !important;
+  --ifm-global-shadow-lw: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+  --axon-disabled-background-color: #f2f3f3;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -21,14 +33,19 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
-  --ifm-color-grey: #dddddd;
+  --ifm-color-grey: #dddddd !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --axon-sidebar-background-color: #28282c;
+  --ifm-toc-border-color: #303030 !important;
+  --ifm-footer-background-color: #212126;
+  --docsearch-searchbox-background: #28282c !important;
+  --axon-disabled-background-color: #212126;
 }
 
 /* font-size */
 body {
   font-family: Montserrat, serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 h1 {
@@ -41,11 +58,18 @@ h2 {
 
 h3 {
   font-size: 32px;
+  margin: 28px 0 8px 0 !important;
 }
 
-.subtitle {
+header>h1 {
+  font-size: 40px;
+  margin: 30px 0 16px 0 !important;
+}
+
+h4 {
   font-size: 28px;
   font-weight: bold;
+  margin: 36px 0 8px 0 !important;
 }
 
 strong {
@@ -54,6 +78,8 @@ strong {
 
 em {
   font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
 }
 
 .smail {
@@ -64,41 +90,243 @@ em {
   font-size: 13px;
 }
 
-
-main {
-  margin-left: 56px;
+code span {
+  font-size: 14px;
+  font-family: Montserrat, serif;
 }
 
-div:has(>.theme-doc-toc-desktop) {
-  margin-left: 56px;
+pre {
+  background-color: #f8f9fa !important;
 }
 
-.theme-doc-toc-desktop {
-  width: 249px;
+[data-theme='dark'] pre {
+  background-color: #2b2b2c !important;
 }
 
-.text-link h4 {
-  margin: 32px 0 16px;
+code {
+  background-color: #f8f9fa !important;
+}
+
+[data-theme='dark'] code {
+  background-color: #2b2b2c !important;
+}
+
+hr {
+  background-color: #e6edec;
+  margin: 8px 0 16px 0 !important;
+}
+
+[data-theme='dark'] hr {
+  background-color: #2b2b2b;
+}
+
+.theme-admonition-tip {
+  background-color: #faf9f0;
+  border-left-color: #F6E085;
+  color: #4e3b0b;
+}
+
+.theme-admonition-tip svg {
+  fill: #4e3b0b !important;
+}
+
+[data-theme='dark'] .theme-admonition-tip svg {
+  fill: #ffffff !important;
+}
+
+[data-theme='dark'] .theme-admonition-tip {
+  background-color: #faf9f0;
+  border-left-color: #F6E085;
+  color: #4e3b0b;
+}
+
+[data-theme='dark'] .theme-admonition-tip {
+  background-color: #24231c;
+  border-left-color: #f6e085;
+  color: #eeeeee;
+}
+
+[data-theme='dark'] .theme-admonition-tip>div:first-child {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .theme-admonition-tip svg {
+  fill: #ffffff;
+}
+
+.theme-admonition-tip>div:first-child {
+  font-size: 18px;
+}
+
+.theme-admonition-tip>div:last-child {
+  font-size: 14px;
+}
+
+nav.menu {
+  background-color: var(--axon-sidebar-background-color);
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+
+.DocSearch-Button {
+  border-radius: 4px !important;
+  background-color: #f3f3f3;
+}
+
+.DocSearch-Button-Keys {
+  visibility: hidden !important;
+}
+
+.developers-contributers .image {
+  padding: 0 28px 16px 28px
+}
+.developers-contributers a {
+  width: 100%;
+}
+.developers-contributers img {
+  width: 100%;
+}
+
+.card {
+  padding-top: 16px;
+}
+
+.explore-axon .image {
+  min-width: 120px;
+  margin-left: auto;
+  padding: 0 26px 8px 0;
+}
+.explore-axon .image a {
+  margin-left: auto;
+}
+
+[data-theme='dark'] .card {
+  background-color: #28282c !important;
+}
+
+[data-theme='dark'] .card .text p {
+  color: #dddddd !important;
+}
+
+.explore-the-stack .card {
+  padding-top: 0;
+  justify-content: flex-end;
+}
+
+.explore-the-stack .text {
+  padding-top: 0;
+}
+
+.explore-the-stack .image {
+  padding: 16px 28px;
+}
+
+.explore-the-stack .image>a {
+  height: 36px;
+}
+
+.feedback-contribute {
+  margin-top: 24px;
+}
+
+.feedback-contribute>.col:first-child>.card {
+  background-color: var(--axon-disabled-background-color);
+}
+
+.feedback-contribute .image {
+  min-width: 75px;
+  margin-left: auto;
+  padding: 26px 26px 0 0;
+}
+
+main>div.container>div.row>div:first-child {
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
+main>div.container>div.row>div:nth-child(2) {
+  padding-left: 0;
+  max-width: 249px;
+}
+
+[data-theme='dark'] .navbar {
+  background-color: #212126 !important;
+}
+
+.navbar__logo {
+  margin: 0 7px 4px 7px;
+}
+
+.navbar__items--right {
+  margin-right: 56px;
+}
+
+.text-link {
+  margin: 36px 0;
+}
+
+.text-link .col {
+  padding: 0;
+}
+
+.text-link span {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.text-link>.col>a:nth-child(2) {
+  margin-top: 16px !important;
 }
 
 .text-link a {
   display: block;
-  color: var(--ifm-color-grey);
+  color: var(--ifm-color-grey) !important;
+}
+
+.table-of-contents {
+  font-size: 14px;
+}
+
+.table-of-contents__link--active {
+  font-weight: 600;
+  color: #000000;
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+  color: #ffffff;
+}
+
+div.pagination-nav__label {
+  font-size: 18px;
+}
+
+#footer-logo {
+  height: 24px;
+  margin-top: 8px;
 }
 
 .footer__col:has(#footer-links-placeholder) {
   max-width: 280px;
 }
 
+ul.footer__items:has(#footer-links-placeholder) {
+  padding-top: 12px;
+}
+
 #footer-links-placeholder a {
-  padding: .6rem;
+  margin: .6rem;
+}
+
+#footer-links-placeholder a:hover {
+  text-decoration: none;
 }
 
 footer .container-fluid {
-  height: 4rem;
+  height: 70px;
 }
 
 footer .footer__bottom {
   position: relative;
-  bottom: 4rem;
+  bottom: 42px;
+  width: 30%;
+  margin: 0 auto;
 }
