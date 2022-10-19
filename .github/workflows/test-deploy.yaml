@@ -2,8 +2,9 @@ name: Test deployment
 
 on:
   pull_request:
-    branches: [develop]
-    paths: [./**]
+    branches: [main]
+    paths-ignore:
+      - '.github/**'
 
 jobs:
   test-deploy:
