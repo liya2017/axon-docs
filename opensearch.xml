@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Axon Documentation</ShortName>
+  <Description>Search Axon Documentation</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">https://docs.axonweb3.io/img/axon.png</Image>
+  <Url type="text/html" method="get" template="https://docs.axonweb3.io/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://docs.axonweb3.io/opensearch.xml" />
+  <moz:SearchForm>https://docs.axonweb3.io/</moz:SearchForm>
+</OpenSearchDescription>
