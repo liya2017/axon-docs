@@ -312,6 +312,10 @@ div:has(pre) {
   box-shadow: none !important;
 }
 
+.theme-last-updated {
+  font-style: normal;
+}
+
 div.pagination-nav__label {
   font-size: 18px;
 }

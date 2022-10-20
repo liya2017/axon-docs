@@ -25,6 +25,10 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          editUrl: ({versionDocsDirPath, docPath}) =>
+              `https://github.com/axonweb3/axon-docs/edit/main/${versionDocsDirPath}/${docPath}`,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: "/",
         },
