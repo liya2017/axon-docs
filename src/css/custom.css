@@ -7,7 +7,7 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-color-grey: #666666;
-  --ifm-font-family-base: Montserrat;
+  --ifm-font-family-base: Montserrat, serif !important;
   --ifm-font-size-base: 14px;
   --ifm-h1-font-size: 48px;
   --ifm-h2-font-size: 40px;
@@ -44,7 +44,7 @@
 
 /* font-size */
 body {
-  font-family: Montserrat, serif;
+  font-family: Montserrat, serif !important;
   font-size: 14px;
 }
 
@@ -92,7 +92,7 @@ em {
 
 code span {
   font-size: 14px;
-  font-family: Montserrat, serif;
+  font-family: Montserrat, serif !important;
 }
 
 pre {
@@ -190,6 +190,18 @@ nav.menu {
   padding-top: 16px;
 }
 
+.developers-contributers, .explore-axon, .explore-the-stack, .feedback-contribute {
+  margin-top: -16px;
+}
+
+div:has(>.card) {
+  margin-top: 16px;
+}
+
+.card a:hover {
+  text-decoration: none;
+}
+
 .explore-axon .image {
   min-width: 120px;
   margin-left: auto;
@@ -225,7 +237,7 @@ nav.menu {
 }
 
 .feedback-contribute {
-  margin-top: 24px;
+  margin-top: 8px;
 }
 
 .feedback-contribute>.col:first-child>.card {
@@ -266,6 +278,7 @@ main>div.container>div.row>div:nth-child(2) {
 
 .text-link .col {
   padding: 0;
+  margin-bottom: 16px;
 }
 
 .text-link span {
