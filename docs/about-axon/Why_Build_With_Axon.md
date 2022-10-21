@@ -9,7 +9,7 @@ Axon facilitates the flow of assets and information between DApps built on diffe
 
 ### High TPS
 
-Axon uses a new Byzantine Fault Tolerance (BFT) based consensus algorithm called Overload consensus (further reading: https://github.com/nervosnetwork/overlord). It decouples transaction sequence from state consensus, so that execution and consensus process can be carried out simultaneously.
+Axon uses a new Byzantine Fault Tolerance (BFT) based consensus algorithm called [Overlord consensus](https://github.com/nervosnetwork/overlord). It decouples transaction sequence from state consensus, so that execution and consensus process can be carried out simultaneously.
 
 This parallel execution supports over 3000 TPS (Transaction Per Second) across hundreds of nodes, with a transaction delay of less than a few seconds.
 
@@ -32,7 +32,7 @@ Axon will soon be fully compatible with Inter-Blockchain Communication (IBC)—t
 ### Here’s how we do it
 
 - CKB-VM
-- Overload Consensus
+- Overlord Consensus
 - P2P Network
 - Mempool
 
