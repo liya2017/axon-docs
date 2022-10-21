@@ -64,5 +64,5 @@ The network of Axon is developed on top of Tentacle, a multi-layered P2P protoco
 
 **Mempool**
 
-Mempool is Axon's memory pool that performs several validations before transactions are allowed access to the pool. When a large number of transactions arrive, they are divided into four queues in the mempool to prevent TPS from exceeding the upper limit of the block intervals.
+Axon's mempool performs multiple validations before committing transactions to the block. When an influx of transactions comes in, the mempool slices these transactions into 4 queues to avert TPS exceeding the block interval limits.
 
