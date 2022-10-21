@@ -74,7 +74,7 @@ Now your basic Axon-cli development environment is ready.
 
 Enter the axon-cli interface by running the following command:
 
-$ `../target/release/axon-cli`
+$ `./target/release/axon-cli`
 
 Quit axon-cli interface by `ctrl C`.
 
