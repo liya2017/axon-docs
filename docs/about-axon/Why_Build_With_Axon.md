@@ -42,9 +42,7 @@ Axon will soon be fully compatible with Inter-Blockchain Communication (IBC)—t
 
 CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instruction set used as a scripting VM. CKB-VM can call contracts on CKB, allowing protocols to be upgraded along with the contracts without hard-coding. With a variety of algorithms precompiled, CKB-VM greatly lowers the barrier of writing EVM-compatible contracts.
 
-- Explore more
-
-  https://github.com/nervosnetwork/ckb-vm
+- [Explore more](https://github.com/nervosnetwork/ckb-vm)
 
 
 
@@ -52,9 +50,7 @@ CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instru
 
 Overload is a BFT consensus algorithm that supports over 3000 TPS across hundreds of nodes, with a transaction delay of less than a few seconds. By decoupling transaction sequence from state consensus, Overload consensus enables execution and consensus process to run in parallel.
 
-- Explore more
-
-  https://github.com/nervosnetwork/overlord
+- [Explore more[(https://github.com/nervosnetwork/overlord)
 
 
 
@@ -62,9 +58,7 @@ Overload is a BFT consensus algorithm that supports over 3000 TPS across hundred
 
 The network of Axon is developed on top of Tentacle, a multi-layered P2P protocol stack, where each layer functions in a relatively independent manner. This design provides maximum flexibility for developers and reduces the complexity of development.
 
-- Explore more
-
-  https://blog.cryptape.com/tentacle-the-network-layer-of-ckb
+- [Explore more](https://blog.cryptape.com/tentacle-the-network-layer-of-ckb)
 
 
 
