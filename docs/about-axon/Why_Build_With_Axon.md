@@ -11,7 +11,7 @@ Axon facilitates the flow of assets and information between DApps built on diffe
 
 Axon uses a new Byzantine Fault Tolerance (BFT) based consensus algorithm called [Overlord Consensus](https://github.com/nervosnetwork/overlord). It decouples transaction sequence from state consensus, so that execution and consensus process can be carried out simultaneously.
 
-This parallel execution supports over 3000 TPS (Transaction Per Second) across hundreds of nodes, with a transaction delay of less than a few seconds.
+This parallel execution supports over 3000 TPS (Transactions Per Second) across hundreds of nodes, with a transaction delay of less than a few seconds.
 
 
 
@@ -40,7 +40,7 @@ Axon will soon be fully compatible with Inter-Blockchain Communication (IBC)—t
 
 **CKB-VM**
 
-CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instruction set used as a scripting VM. CKB-VM can call contracts on CKB, allowing protocols to be upgraded along with the contracts without hard-coding. With a variety of algorithms precompiled, CKB-VM greatly lowers the barrier of writing EVM-compatible contracts.
+CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instruction set used as a scripting VM. CKB-VM can call contracts on CKB, allowing protocols to be upgraded along with the contracts without hard-coding. With a variety of algorithms precompiled, CKB-VM greatly lowers the barrier to writing EVM-compatible contracts.
 
 - [Explore more](https://github.com/nervosnetwork/ckb-vm)
 
@@ -48,7 +48,7 @@ CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instru
 
 **Overlord Consensus**
 
-Overlord is a BFT consensus algorithm that supports over 3000 TPS across hundreds of nodes, with a transaction delay of less than a few seconds. By decoupling transaction sequence from state consensus, Overlord consensus enables execution and consensus process to run in parallel.
+Overlord is a BFT consensus algorithm that supports over 3000 TPS across hundreds of nodes, with a transaction delay of less than a few seconds. By decoupling transaction sequence from state consensus, Overlord Consensus enables the  execution and consensus process to run in parallel.
 
 - [Explore more](https://github.com/nervosnetwork/overlord)
 
