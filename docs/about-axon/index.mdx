@@ -114,7 +114,7 @@ Check out the docs for the various parts of the Axon stack
             light={useBaseUrl('/img/community_light.svg')}
             dark={useBaseUrl('/img/community_dark.svg')}
             url=""
-            description="Under construction, please wait"
+            description={<></>}
             imagePosition="right"
         />
     </div>
@@ -124,7 +124,7 @@ Check out the docs for the various parts of the Axon stack
             light={useBaseUrl('/img/feedback_light.svg')}
             dark={useBaseUrl('/img/feedback_dark.svg')}
             url="#"
-            description="Submit and view feedback for"
+            description={<></>}
             imagePosition="right"
         />
     </div>
@@ -134,28 +134,43 @@ Check out the docs for the various parts of the Axon stack
             light={useBaseUrl('/img/contribute_light.svg')}
             dark={useBaseUrl('/img/contribute_dark.svg')}
             url="#"
-            description="Submit request"
+            description={<></>}
             imagePosition="right"
         />
     </div>
 </div>
 
-import Link from '@docusaurus/Link';
+#### Ecosystem documentation
 
-<div className="row text-link">
+<div className="row ecosystem-documentation">
     <div className="col col--4">
-        <span>ECOSYSTEM DOCUMENTATION</span>
-        <Link to="#">Cosmos SDK Docs</Link>
-        <Link to="#">Ethereum Docs</Link>
-        <Link to="#">Tendermint Core Docs</Link>
+        <ImageCard
+            title="Cosmos SDK Docs"
+            light={useBaseUrl('/img/docs_light.svg')}
+            dark={useBaseUrl('/img/docs_dark.svg')}
+            url="#"
+            description={<></>}
+            imagePosition="right"
+        />
     </div>
     <div className="col col--4">
-        <span>COMMUNITY</span>
-        <Link to="#">Axon Discord Community</Link>
-        <Link to="#">Axon Commonwealth Forum</Link>
+        <ImageCard
+            title="Ethereum Docs"
+            light={useBaseUrl('/img/docs_light.svg')}
+            dark={useBaseUrl('/img/docs_dark.svg')}
+            url="#"
+            description={<></>}
+            imagePosition="right"
+        />
     </div>
     <div className="col col--4">
-        <span>Axon</span>
-        <Link to="#">Jobs at Axon</Link>
+        <ImageCard
+            title="Tendermint Core Docs"
+            light={useBaseUrl('/img/docs_light.svg')}
+            dark={useBaseUrl('/img/docs_dark.svg')}
+            url="#"
+            description={<></>}
+            imagePosition="right"
+        />
     </div>
 </div>

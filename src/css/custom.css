@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 :root {
   --ifm-color-primary: #000000;
   --ifm-color-primary-dark: #29784c;
@@ -190,7 +192,7 @@ nav.menu {
   padding-top: 16px;
 }
 
-.developers-contributers, .explore-axon, .explore-the-stack, .feedback-contribute {
+.developers-contributers, .explore-axon, .explore-the-stack, .feedback-contribute, .ecosystem-documentation {
   margin-top: -16px;
 }
 
@@ -236,7 +238,7 @@ div:has(>.card) {
   height: 36px;
 }
 
-.feedback-contribute {
+.feedback-contribute, .ecosystem-documentation {
   margin-top: 8px;
 }
 
@@ -244,10 +246,23 @@ div:has(>.card) {
   background-color: var(--axon-disabled-background-color);
 }
 
-.feedback-contribute .image {
+.feedback-contribute .image, .ecosystem-documentation .image {
   min-width: 75px;
   margin-left: auto;
-  padding: 26px 26px 0 0;
+  padding: 16px 26px 10px 0;
+  justify-content: right;
+  display: flex;
+  align-items: center !important;
+}
+
+.feedback-contribute .card, .ecosystem-documentation .card {
+  padding: 0;
+}
+
+.feedback-contribute .text, .ecosystem-documentation .text {
+  display: flex;
+  align-items: center;
+  padding: 22px 0 22px 28px !important;
 }
 
 main>div.container>div.row>div:first-child {
