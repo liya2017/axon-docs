@@ -116,7 +116,13 @@ Check the status by running the following commands:
 
 > $ `docker ps`
 
-<img alt="liveness status" src={useBaseUrl("img/for-dapp-devs/zero-to-axon-with-axon-cli/liveness status.png")}  width="100%"/>
+```
+CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS                                    PORTS                                            NAMES
+7087aae0fc3c   wenyuancas/axon:v1   "./axon -c=/app/devt…"   5 seconds ago    Up 5 seconds                              0.0.0.0:8003->8000/tcp, 0.0.0.0:8903->8100/tcp   axon4
+509d345dbe92   wenyuancas/axon:v1   "./axon -c=/app/devt…"   13 seconds ago   Up 13 seconds                             0.0.0.0:8002->8000/tcp, 0.0.0.0:8902->8100/tcp   axon3
+bcf08ee3df09   wenyuancas/axon:v1   "./axon -c=/app/devt…"   21 seconds ago   Restarting (137) Less than a second ago                                                    axon2
+4d81c3373eed   wenyuancas/axon:v1   "./axon -c=/app/devt…"   28 seconds ago   Up 2 seconds                              0.0.0.0:8000->8000/tcp, 0.0.0.0:8900->8100/tcp   axon1
+```
 
 2. **Check the logs**
 
@@ -124,7 +130,13 @@ Check the status by running the following commands:
 
 Return:
 
-<img alt="logs status" src={useBaseUrl("img/for-dapp-devs/zero-to-axon-with-axon-cli/logs status.png")}  width="100%"/>
+```
+[2022-10-21T09:02:37.961286656+00:00 INFO overlord::state::process] Overlord: "02b77c74eb68af3d4d6cc7884ed6709f1a2a1af0f713382a4438ec2ea3a70d4d7f" become leader, height 1, round 3
+[2022-10-21T09:02:37.962387627+00:00 WARN overlord::state::process] Overlord: state receive an outdated status, height 1, self height 1
+[2022-10-21T09:02:48.281954825+00:00 INFO overlord::state::process] overlord: start from wal wal info height 1, round 3, step Propose
+[2022-10-21T09:02:48.285925397+00:00 INFO overlord::state::process] Overlord: "02b77c74eb68af3d4d6cc7884ed6709f1a2a1af0f713382a4438ec2ea3a70d4d7f" become leader, height 1, round 3
+[2022-10-21T09:02:48.286568906+00:00 WARN overlord::state::process] Overlord: state receive an outdated status, height 1, self height 1
+```
 
 Logs contain useful information, such as block height (472 in this case), which will increase over time.
 
