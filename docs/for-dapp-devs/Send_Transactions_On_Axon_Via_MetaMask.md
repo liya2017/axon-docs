@@ -16,7 +16,7 @@ This guide provides instructions for sending transactions on Axon via MetaMask a
 
 ### 1.1 Local Setup
 
-[Download Axon](https://github.com/axonweb3/axon), find **Install** in **README**, and run the following commands to start the node: 
+[Download Axon](https://github.com/axonweb3/axon), find <b>Install</b> in <b>README</b>, and run the following commands to start the node: 
 
 `cargo run --release -- -c devtools/chain/config.toml -g devtools/chain/genesis_single_node.json` 
 
@@ -41,7 +41,7 @@ Once the node has been successfully set up, you will notice that the block heigh
 
 <img alt="Config Axon Network Manually" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/2.4_Config_Axon_Network_Manually.png")}  width="80%"/>
 
-On the **Networks** page, make sure that the **New RPC URL** and **Chain ID** are configured according to the following information. Copy and paste the text from the boxes below:
+On the <b>Networks</b> page, make sure that the <b>New RPC URL</b> and <b>Chain ID</b> are configured according to the following information. Copy and paste the text from the boxes below:
 
 **New RPC URL**
 
@@ -55,11 +55,11 @@ On the **Networks** page, make sure that the **New RPC URL** and **Chain ID** ar
 2022
 ```
 
-If you know Axon well enough, you can modify the **RPC URL** and **Chain ID**. They are in `devtools/chain/config.toml` and `devtools/chain/genesis_single_node.json`.
+If you know Axon well enough, you can modify the <b>RPC URL</b> and <b>Chain ID</b>. They are in `devtools/chain/config.toml` and `devtools/chain/genesis_single_node.json`.
 
 #### Save Axon Network
 
-Once you have filled out all the items above, click **Save** and you will be notified that the Axon network has been added.
+Once you have filled out all the items above, click <b>Save</b> and you will be notified that the Axon network has been added.
 
 <img alt="Untitled" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled.png")}  width="80%"/>
 
@@ -79,19 +79,19 @@ The account and the balance will be displayed once the account is added. The Gen
 
 ### 2.2 Send a Transaction
 
-Click **Send** on the balance page and let’s transfer some tokens to another account. Here we are about to transfer 100 AXON to `0xdc796dfc1bb45f21d17be267877c3388d766937b`.
+Click <b>Send</b> on the balance page and let’s transfer some tokens to another account. Here we are about to transfer 100 AXON to `0xdc796dfc1bb45f21d17be267877c3388d766937b`.
 
 <img alt="Untitled 2" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 2.png")}  width="50%"/>
 
-Click **Next**.
+Click <b>Next</b>.
 
 <img alt="Untitled 3" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 3.png")}  width="50%"/>
 
-Click **Confirm**. 
+Click <b>Confirm</b>. 
 
 <img alt="Untitled 4" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 4.png")}  width="80%"/>
 
-You'll see that the transaction is in **Pending**. It takes a few seconds for the status to change, then you‘ll know that the transaction has been successful and the balance is 100 AXON less.
+You'll see that the transaction is in <b>Pending</b>. It takes a few seconds for the status to change, then you'll know that the transaction has been successful and the balance is 100 AXON less.
 
 <img alt="Untitled 5" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 5.png")}  width="80%"/>
 

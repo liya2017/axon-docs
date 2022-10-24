@@ -10,7 +10,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Axon-cli is an all-in-one client that makes operating Axon fast and easy. It contains initialization, DevOps, and cross-chain requests, among other functions.
 
-*Zero to Axon with Axon-cli* is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
+**Zero to Axon with Axon-cli** is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
 
 
 

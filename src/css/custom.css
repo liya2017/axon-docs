@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,400i,500,600,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,400i,500,600,600i,700,700i');
 
 :root {
   --ifm-color-primary: #000000;
@@ -10,7 +10,8 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-color-grey: #666666;
   --ifm-font-family-base: Montserrat, serif !important;
-  --ifm-font-size-base: 14px;
+  --ifm-font-weight-bold: 600;
+  --ifm-font-size-base: 16px;
   --ifm-h1-font-size: 48px;
   --ifm-h2-font-size: 40px;
   --ifm-h3-font-size: 32px;
@@ -47,48 +48,104 @@
 /* font-size */
 body {
   font-family: Montserrat, serif !important;
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.markdown:not(:has(#homepage)) a {
+  text-decoration: underline;
+  color: #2d76ba;
+}
+
+.markdown:not(:has(#homepage)) img {
+  padding: 1px;
+  background-color: #28282c;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 42px;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 34px;
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 26px;
   margin: 28px 0 8px 0 !important;
 }
 
 header>h1 {
-  font-size: 40px;
+  font-size: 34px;
   margin: 30px 0 16px 0 !important;
 }
 
 h4 {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 600;
   margin: 36px 0 8px 0 !important;
 }
 
 strong {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 em {
-  font-size: 18px;
+  font-size: 10px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .smail {
-  font-size: 14px;
+  font-size: 6px;
 }
 
 .x-smail {
+  font-size: 5px;
+}
+
+#homepage {
+  font-size: 14px;
+}
+
+#homepage h1 {
+  font-size: 48px;
+}
+
+#homepage h2 {
+  font-size: 40px;
+}
+
+#homepage h3 {
+  font-size: 32px;
+  margin: 28px 0 8px 0 !important;
+}
+
+#homepage header>h1 {
+  font-size: 40px;
+  margin: 30px 0 16px 0 !important;
+}
+
+#homepage h4 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 36px 0 8px 0 !important;
+}
+
+#homepage strong {
+  font-size: 24px;
+}
+
+#homepage em {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+#homepage .smail {
+  font-size: 14px;
+}
+
+#homepage .x-smail {
   font-size: 13px;
 }
 
@@ -297,7 +354,7 @@ main>div.container>div.row>div:nth-child(2) {
 }
 
 .text-link span {
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 

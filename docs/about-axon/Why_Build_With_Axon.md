@@ -19,7 +19,7 @@ This parallel execution supports over 3000 TPS (Transactions Per Second) across 
 
 Axon provides a full-fledged toolkit that enables web3 developers to start building right away without having to understand the fundamentals. Designed with a different approach than Relayers, Axon automates off-chain communication, thereby significantly reducing deployment costs.
 
-The hands-on tutorial [*Zero to Axon with Axon-cli*](https://docs.axonweb3.io/for-dapp-devs/Zero_To_Axon_With_Axon_Cli) teaches you how to build a chain from scratch in less than 15 minutes.
+The hands-on tutorial <b>[Zero to Axon with Axon-cli](/for-dapp-devs/Zero_To_Axon_With_Axon_Cli)</b> teaches you how to build a chain from scratch in less than 15 minutes.
 
 
 
