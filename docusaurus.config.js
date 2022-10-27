@@ -60,7 +60,8 @@ const config = {
           alt: 'Axon',
           src: 'img/logo_light.png',
           srcDark: 'img/logo_dark.png',
-          href: 'https://www.nervos.org/axon',
+          href: '/',
+          target: '_self',
         },
         items: [
 
