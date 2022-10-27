@@ -1,0 +1,30 @@
+# .github/workflows/check_spelling.yml
+name: Check Spelling
+on:
+  pull_request:
+    paths:
+    - '**.js'
+    - '**.vue'
+    - '**.txt'
+    - '**.html'
+    - '**.md'
+jobs:
+  spelling:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Check Spelling
+      uses: UnicornGlobal/spellcheck-github-actions@master
+  # Linting:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Lint changelog file
+  #     uses: docker://avtodev/markdown-lint:v1.1.0
+  #     with:
+  #       rules: '/lint/rules/changelog.js'
+  #       config: '/lint/config/changelog.yml'
+  #       entrypoint: /docker-entrypoint.sh # or wherever the markdownlint binary is located
+  #       args: 'README.md'
+
