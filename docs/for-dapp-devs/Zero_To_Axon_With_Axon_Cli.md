@@ -16,8 +16,7 @@ Axon-cli is an all-in-one client that makes operating Axon fast and easy. It con
 
 ### Install Axon-cli From GitHub
 
-1. Start by cloning the Axon-cli GitHub repo from [GitHub](https://github.com/axonweb3/axon-devops/tree/main/axon-cli)
-by command:
+1. Start by cloning Axon-cli from the [GitHub repo](https://github.com/axonweb3/axon-cli) by command:
 
 
 ```bash
