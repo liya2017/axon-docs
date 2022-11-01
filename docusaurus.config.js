@@ -74,7 +74,7 @@ const config = {
               {
                 html: `
                 <img id="footer-logo" src="/img/logo_light.png" alt="Axon"/>
-                <a style="position: absolute; padding: 8px 8px 8px 28px" href="mailto:axon@axonweb3.io">axon@axonweb3.io</a>
+                <a href="mailto:axon@axonweb3.io">axon@axonweb3.io</a>
                 `
               }
             ]

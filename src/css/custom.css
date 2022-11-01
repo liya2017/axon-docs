@@ -74,7 +74,7 @@ h3 {
   margin: 28px 0 8px 0 !important;
 }
 
-header>h1 {
+header > h1 {
   font-size: 34px;
   margin: 30px 0 16px 0 !important;
 }
@@ -120,7 +120,7 @@ em {
   margin: 28px 0 8px 0 !important;
 }
 
-#homepage header>h1 {
+#homepage header > h1 {
   font-size: 40px;
   margin: 30px 0 16px 0 !important;
 }
@@ -205,7 +205,7 @@ hr {
   color: #eeeeee;
 }
 
-[data-theme='dark'] .theme-admonition-tip>div:first-child {
+[data-theme='dark'] .theme-admonition-tip > div:first-child {
   color: #ffffff;
 }
 
@@ -213,11 +213,11 @@ hr {
   fill: #ffffff;
 }
 
-.theme-admonition-tip>div:first-child {
+.theme-admonition-tip > div:first-child {
   font-size: 18px;
 }
 
-.theme-admonition-tip>div:last-child {
+.theme-admonition-tip > div:last-child {
   font-size: 14px;
 }
 
@@ -235,12 +235,18 @@ nav.menu {
   visibility: hidden !important;
 }
 
-.developers-contributers .image {
-  padding: 0 28px 16px 28px
+.text {
+  padding: 0 28px 16px !important;
 }
+
+.developers-contributers .image {
+  padding: 0 28px 16px
+}
+
 .developers-contributers a {
   width: 100%;
 }
+
 .developers-contributers img {
   width: 100%;
 }
@@ -266,6 +272,7 @@ div:has(>.card) {
   margin-left: auto;
   padding: 0 26px 8px 0;
 }
+
 .explore-axon .image a {
   margin-left: auto;
 }
@@ -291,7 +298,7 @@ div:has(>.card) {
   padding: 16px 28px;
 }
 
-.explore-the-stack .image>a {
+.explore-the-stack .image > a {
   height: 36px;
 }
 
@@ -299,7 +306,7 @@ div:has(>.card) {
   margin-top: 8px;
 }
 
-.feedback-contribute>.col:first-child>.card {
+.feedback-contribute > .col:first-child > .card {
   background-color: var(--axon-disabled-background-color);
 }
 
@@ -322,12 +329,12 @@ div:has(>.card) {
   padding: 22px 0 22px 28px !important;
 }
 
-main>div.container>div.row>div:first-child {
+main > div.container > div.row > div:first-child {
   padding-left: 56px;
   padding-right: 56px;
 }
 
-main>div.container>div.row>div:nth-child(2) {
+main > div.container > div.row > div:nth-child(2) {
   padding-left: 0;
   max-width: 249px;
 }
@@ -358,7 +365,7 @@ main>div.container>div.row>div:nth-child(2) {
   margin-bottom: 16px;
 }
 
-.text-link>.col>a:nth-child(2) {
+.text-link > .col > a:nth-child(2) {
   margin-top: 16px !important;
 }
 
@@ -397,6 +404,12 @@ div.pagination-nav__label {
   margin-top: 8px;
 }
 
+#footer-logo + a {
+  position: absolute;
+  padding: 8px 8px 8px 28px;
+  font-weight: 600;
+}
+
 .footer__col:has(#footer-links-placeholder) {
   max-width: 280px;
 }
@@ -422,4 +435,80 @@ footer .footer__bottom {
   bottom: 42px;
   width: 30%;
   margin: 0 auto;
+}
+
+@media (max-width: 996px) {
+  .text {
+    padding: 0 16px 16px !important;
+  }
+
+  main > div.container > div.row > div:first-child {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .developers-contributers .image {
+    padding: 0 16px 16px
+  }
+
+  .explore-axon .image {
+    padding: 0 16px 8px 0;
+  }
+
+  .explore-the-stack .image {
+    padding: 16px 16px;
+  }
+
+  .feedback-contribute .text, .ecosystem-documentation .text {
+    padding: 22px 0 22px 16px !important;
+  }
+
+  .feedback-contribute .image, .ecosystem-documentation .image {
+    padding: 16px 14px 10px 0;
+  }
+
+  footer .container-fluid {
+    height: auto;
+  }
+
+  #footer-logo {
+    height: 36px;
+    margin-top: 2px;
+  }
+
+  #footer-logo + a {
+    position: relative;
+    left: -130px;
+    bottom: -86px;
+  }
+
+  .footer__col:has(#footer-logo) {
+    margin-bottom: 0;
+  }
+
+  .footer__col:has(#footer-links-placeholder) {
+    max-width: 280px;
+  }
+
+  ul.footer__items:has(#footer-links-placeholder) {
+    padding-top: 0;
+  }
+
+  #footer-links-placeholder > a {
+    margin: .7rem;
+  }
+
+  #footer-links-placeholder > a:first-child {
+    margin-left: 0;
+  }
+
+  #footer-links-placeholder > a > img {
+    width: 1.4rem;
+  }
+
+  footer .footer__bottom {
+    bottom: 8px;
+    width: 100%;
+    text-align: left;
+  }
 }

@@ -23,7 +23,7 @@ export default function ImageCard({title, light, dark, url, description, imagePo
     }[imagePosition]! as Property.FlexDirection;
 
     const Text = () =>
-        <div className="card__body text" style={{padding: '0 28px 16px 28px'}}>
+        <div className="card__body text">
             <Link to={url}>
                 {typeof (title) === 'string' ?
                     <em>{title}</em> :
