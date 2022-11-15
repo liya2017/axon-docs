@@ -20,7 +20,7 @@ Axon-cli is an all-in-one client that makes operating Axon fast and easy. It con
 
 
 ```bash
-git clone git@github.com:axonweb3/axon-cli.git
+git clone https://github.com/axonweb3/axon-cli.git
 ```
 
 2. Enter into axon-cli directory
