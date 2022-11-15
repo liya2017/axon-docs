@@ -71,3 +71,4 @@ privKey
 soliditylang
 RPC
 keystore
+blockhash
