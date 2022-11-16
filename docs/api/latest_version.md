@@ -54,7 +54,6 @@ Response
 }
 ```
 
-
 ### `eth_blockNumber`
 * `eth_blockNumber()`
 * result: [`U256`](#type-U256) 
@@ -172,11 +171,11 @@ Request
 
 Response
 
-```
+```json
 {
-  "id":64,
-  "jsonrpc":"2.0",
-  "result": true
+	"id":64,
+	"jsonrpc":"2.0",
+	"result": true
 }
 
 ```
@@ -364,7 +363,6 @@ Response
 }
 
 ```
-
 
 ### `eth_getTransactionByHash`
 * `eth_getTransactionByHash(blockHash)`
@@ -592,21 +590,21 @@ blockCount and newest Block are both required parameters.
 
 Request
 
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionReceipt",
-  "params": [
-    "0x8",
-	"0x1b4"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionReceipt",
+	"params": [
+		"0x8",
+		"0x1b4"
+	]
 }
 ```
 
 Response
 
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -639,20 +637,20 @@ Integer of the number of transactions in this block.
 
 Request
 
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getBlockTransactionCountByHash",
-  "params": [
-    "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getBlockTransactionCountByHash",
+	"params": [
+		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+	]
 }
 ```
 
 Response
 
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x1b72",
