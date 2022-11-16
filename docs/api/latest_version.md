@@ -6,15 +6,16 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-
 JSON-RPC API Endpoints allow you to interact with a local or remote Axon node using HTTP, IPC or WebSocket.
 
 ## RPC Methods
 
 ## Gossip Methods
+
 Gossip methods track the head of the chain. In this way, transactions can move through the network and find their way into blocks; clients can discover new blocks as well. 
 
 ### Method `eth_sendRawTransaction`
+
 * `eth_sendRawTransaction(data)`
     * `data`: [`Hex`](#type-Hex) 
 * result: [`H256`](#type-H256) 
@@ -23,8 +24,7 @@ Submits a pre-signed transaction for broadcast to the Axon network.
 
 #### Params
 
-*   `data` - The signed transaction data.
-
+* `data` - The signed transaction data.
 
 #### Returns
 
@@ -34,36 +34,33 @@ TRANSACTION HASH - 32 Bytes - the transaction hash.
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_sendRawTransaction",
-  "params": [
-    "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_sendRawTransaction",
+	"params": [
+		"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+	]
 }
 ```
-
 
 Response
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-   "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
+	"id": 1,
+	"jsonrpc": "2.0",
+	"result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
 }
 ```
 
-
 ### Method `eth_blockNumber`
+
 * `eth_blockNumber()`
 * result: [`U256`](#type-U256) 
 
-Returns the current "latest" block number.
+Returns the current `latest` block number.
 
 #### Params
 
@@ -77,22 +74,18 @@ BLOCK NUMBER - a hex code of an integer representing the current block number th
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_blockNumber",
-  "params": [
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_blockNumber",
+	"params": []
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x3466",
@@ -107,24 +100,23 @@ Response
     * `summary`: [`Hex`](#type-Hex)
 * result: [`bool`](#type-bool) 
 
-Used for submitting a proof-of-work solution. Since the axon does not use it, so returns true forever.
+Used for submitting a proof-of-work solution. Since the axon does not use it, so returns `true` forever.
 
 #### Params
 
-*   `nc` - 8 Bytes - The nonce found (64 bits)
-*   `hash` -  32 Bytes - The header's pow-hash (256 bits)
-*   `summary` - 32 Bytes - The mix digest (256 bits)
+* `nc` - 8 Bytes, the nonce found.
+* `hash` -  32 Bytes, the header's pow-hash.
+* `summary` - 32 Bytes, the mix digest.
 
 #### Returns
 
-  Boolean - returns true if the provided solution is valid, otherwise false.Since the axon does not use it, so return true forever.
+Boolean - returns true if the provided solution is valid, otherwise false.Since the axon does not use it, so return `true` forever.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_submitWork",
@@ -136,20 +128,19 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":64,
-  "jsonrpc":"2.0",
-  "result": true
+	"id":64,
+	"jsonrpc":"2.0",
+	"result": true
 }
 
 ```
 
 ### Method `eth_submitHashrate`
+
 * `eth_submitHashrate(hash_rate,client_id)`
     * `hash_rate`: [`Hex`](#type-Hex)
     * `client_id`: [`Hex`](#type-Hex)
@@ -159,19 +150,18 @@ Used for submitting mining hashrate. This method always returns true.
 
 #### Params
 
-*   `hash_rate` - Hashrate, a hexadecimal string representation (32 bytes) of the hash rate
-*   `client_id` -  ID, String - A random hexadecimal(32 bytes) ID identifying the client
+* `hash_rate` - Hashrate, a hexadecimal string representation (32 bytes) of the hash rate.
+* `client_id` -  ID, String, a random hexadecimal(32 bytes) ID identifying the client.
 
 #### Returns
 
-  Boolean - returns true if submitting went through successfully and false otherwise.
+Boolean - returns `true` if submitting went through successfully and `false` otherwise.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_submitHashrate",
@@ -182,9 +172,7 @@ Request
 }
 ```
 
-
 Response
-
 
 ```
 {
@@ -196,49 +184,46 @@ Response
 ```
 
 ## History Methods
+
 History methods retrieve the historical records of every block since the genesis. This is like one large append-only file, and includes all block headers, block bodies, uncle blocks, and transaction receipts.
 
-
 ### Method `eth_getBlockByNumber`
+
 * `eth_getBlockByNumber(number,show_rich_tx)`
-    * `number`: [`BlockId`](#type-BlockId) `|` `"earliest"``|` `"latest"``|` `"pending"`
+    * `number`: [`BlockId`](#type-BlockId) `|` `"earliest"` `|` `"latest"` `|` `"pending"`
     * `show_rich_tx`: [`bool`](#type-bool)
 * result: [`BlockView`](#type-Blockview) 
 
 Returns information about a block by block number.
 
-
 #### Params
 
-*   `number` -  A block number.
-*   `show_rich_tx` -  Boolean,If true it returns the full transaction objects, if false only the hashes of the transactions.
-
+* `number` -  A block number.
+* `show_rich_tx` -  Boolean, if true it returns the full transaction objects, if false only the hashes of the transactions.
 
 #### Returns
+
 The RPC returns the block details.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getBlockByNumber",
-  "params": [
-    "0x1b4",
-    true
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getBlockByNumber",
+	"params": [
+		"0x1b4",
+		true
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -294,6 +279,7 @@ Response
 ```
 
 ### Method `eth_getBlockByHash`
+
 * `eth_getBlockByHash(hash,show_rich_tx)`
     * `hash`: [`H256`](#type-H256) 
     * `show_rich_tx`: [`bool`](#type-bool)
@@ -301,38 +287,34 @@ Response
 
 Returns information about a block by hash.
 
-
 #### Params
 
-*   `block_hash` -  DATA, 32 Bytes - Hash of a block.
-*   `show_rich_tx` -  Boolean, If true it returns the full transaction objects, if false only the hashes of the transactions.
-
+* `block_hash` -  DATA, 32 Bytes, hash of a block.
+* `show_rich_tx` -  Boolean, If true it returns the full transaction objects, if false only the hashes of the transactions.
 
 #### Returns
+
 The RPC returns the block details by block hash.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getBlockByHash",
-  "params": [
-    "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-    true
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getBlockByHash",
+	"params": [
+		"0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+		true
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -387,19 +369,17 @@ Response
 
 ```
 
-
 ### Method `eth_getTransactionByHash`
+
 * `eth_getTransactionByHash(blockHash)`
     * `blockHash`: [`H256`](#type-H256)
 * result: [`TransactionView`](#type-TransactionView)
 
 Returns the information about a transaction requested by transaction hash.
 
-
 #### Params
 
-*   `blockHash` - Hash of a transaction.
-
+* `blockHash` - Hash of a transaction.
 
 #### Returns
 
@@ -415,31 +395,28 @@ Object - A transaction object, or null when no transaction was found:
 - to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
 - transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
 - value: QUANTITY - value transferred in Wei.
-- v: QUANTITY - ECDSA recovery id
-- r: QUANTITY - ECDSA signature r
-- s: QUANTITY - ECDSA signature s
+- v: QUANTITY - ECDSA recovery id.
+- r: QUANTITY - ECDSA signature r.
+- s: QUANTITY - ECDSA signature s.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionByHash",
-  "params": [
-    "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionByHash",
+	"params": [
+		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -471,41 +448,39 @@ Response
 ```
 
 ### Method `eth_getBlockTransactionCountByNumber`
+
 * `eth_getBlockTransactionCountByNumber(number)`
     * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
 
 Returns the number of transactions in a block matching the given block number.
 
-
 #### Params
 
-*   `number` - A block number.
+* `number` - A block number.
 
 #### Returns
+
 Integer of the number of transactions in this block.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getBlockTransactionCountByNumber",
-  "params": [
-    "0xe90"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getBlockTransactionCountByNumber",
+	"params": [
+		"0xe90"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x1bb6",
@@ -515,6 +490,7 @@ Response
 ```
 
 ### Method `eth_getTransactionReceipt`
+
 * `eth_getTransactionReceipt(hash)`
     * `hash`: [`H256`](#type-H256)
 * result: [`Web3Receipt`](#type-Web3Receipt)
@@ -525,45 +501,43 @@ Returns the receipt of a transaction by transaction hash.
 
 #### Params
 
-*   `hash` - 32 Bytes - hash of a transaction.
+* `hash` - 32 Bytes, hash of a transaction.
 
 #### Returns
-* Object - A transaction receipt object, or null when no receipt was found.
-	* transactionHash : DATA, 32 Bytes - hash of the transaction.
-	* transactionIndex: QUANTITY - integer of the transactions index position in the block.
-	* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in.
-	* blockNumber: QUANTITY - block number where this transaction was in.
-	* from: DATA, 20 Bytes - address of the sender.
-	* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-	* cumulativeGasUsed : QUANTITY - The total amount of gas used when this transaction was executed in the block.
-	* gasUsed : QUANTITY - The amount of gas used by this specific transaction alone.
-	* contractAddress : DATA, 20 Bytes - The contract address created, if the transaction was a * contract creation, otherwise null.
-	* logs: Array - Array of log objects, which this transaction generated.
-	* logsBloom: DATA, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs. It also returns either :
-	* root : DATA 32 bytes of post-transaction stateroot (pre Byzantium)
-	* status: QUANTITY either 1 (success) or 0 (failure)
+
+Object - A transaction receipt object, or null when no receipt was found.
+- transactionHash : DATA, 32 Bytes - hash of the transaction.
+- transactionIndex: QUANTITY - integer of the transactions index position in the block.
+- blockHash: DATA, 32 Bytes - hash of the block where this transaction was in.
+- blockNumber: QUANTITY - block number where this transaction was in.
+- from: DATA, 20 Bytes - address of the sender.
+- to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
+- cumulativeGasUsed : QUANTITY - The total amount of gas used when this transaction was executed in the block.
+- gasUsed : QUANTITY - The amount of gas used by this specific transaction alone.
+- contractAddress : DATA, 20 Bytes - The contract address created, if the transaction was a * contract creation, otherwise null.
+- logs: Array - Array of log objects, which this transaction generated.
+- logsBloom: DATA, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs. It also returns either.
+- root : DATA 32 bytes of post-transaction stateroot (pre Byzantium).
+- status: QUANTITY either 1 (success) or 0 (failure).
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionReceipt",
-  "params": [
-    "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionReceipt",
+	"params": [
+		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -599,6 +573,7 @@ Response
 ```
 
 ### Method `eth_feeHistory`
+
 * `eth_feeHistory(block_count,newest_block,reward_percentiles)`
     * `block_count`: [`U256`](#type-U256)
 	* `newest_block`: [`BlockId`](#type-BlockId)
@@ -606,13 +581,13 @@ Response
 * result: [`Web3FeeHistory`](#type-Web3FeeHistory)
 
 Returns base fee per gas and transaction effective priority fee per gas history for the requested block range if available. The range between headBlock-4 and headBlock is guaranteed to be available while retrieving data from the pending block and older history are optional to support. For pre-EIP-1559 blocks, the gas prices are returned as rewards and zeroes are returned for the base fee per gas.
-blockCount and newestBlock are both required parameters
+blockCount and newest Block are both required parameters.
 
 #### Params
 
-*   `block_count` - 256-bit unsigned integer.
-*   `newest_block` - A block number.
-*   `reward_percentiles` -  (optional) A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
+* `block_count` - 256-bit unsigned integer.
+* `newest_block` - A block number.
+* `reward_percentiles` -  (optional) A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
 
 #### Returns
 * oldestBlock - Lowest number block of the returned range expressed as a hexidecimal number.
@@ -623,7 +598,6 @@ blockCount and newestBlock are both required parameters
 #### Examples
 
 Request
-
 
 ```
 {
@@ -637,9 +611,7 @@ Request
 }
 ```
 
-
 Response
-
 
 ```
 {
@@ -664,7 +636,7 @@ Returns the number of transactions in a block from a block matching the given bl
 
 #### Params
 
-*   `hash` - 32 Bytes - hash of a block
+* `hash` - 32 Bytes, hash of a block.
 
 #### Returns
 
@@ -673,7 +645,6 @@ Integer of the number of transactions in this block.
 #### Examples
 
 Request
-
 
 ```
 {
@@ -686,9 +657,7 @@ Request
 }
 ```
 
-
 Response
-
 
 ```
 {
@@ -709,50 +678,46 @@ Returns information about a transaction by block hash and transaction index posi
 
 #### Params
 
-*   `hash` - 32 Bytes - hash of a block
-*   `position` - integer of the transaction index position.
+* `hash` - 32 Bytes, hash of a block
+* `position` - integer of the transaction index position.
 
 #### Returns
 
-* Object - A transaction object, or null when no transaction was found:
-	* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
-	* blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
-	* from: DATA, 20 Bytes - address of the sender.
-	* gas: QUANTITY - gas provided by the sender.
-	* gasPrice: QUANTITY - gas price provided by the sender in Wei.
-	* hash: DATA, 32 Bytes - hash of the transaction.
-	* input: DATA - the data send along with the transaction.
-	* nonce: QUANTITY - the number of transactions made by the sender prior to this one.
-	* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-	* transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
-	* value: QUANTITY - value transferred in Wei.
-	* v: QUANTITY - ECDSA recovery id
-	* r: QUANTITY - ECDSA signature r
-	* s: QUANTITY - ECDSA signature s
-
+Object - A transaction object, or null when no transaction was found:
+* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
+* blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
+* from: DATA, 20 Bytes - address of the sender.
+* gas: QUANTITY - gas provided by the sender.
+* gasPrice: QUANTITY - gas price provided by the sender in Wei.
+* hash: DATA, 32 Bytes - hash of the transaction.
+* input: DATA - the data send along with the transaction.
+* nonce: QUANTITY - the number of transactions made by the sender prior to this one.
+* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
+* transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
+* value: QUANTITY - value transferred in Wei.
+* v: QUANTITY - ECDSA recovery id.
+* r: QUANTITY - ECDSA signature r.
+* s: QUANTITY - ECDSA signature s.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionByBlockHashAndIndex",
-  "params": [
-     "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-     "0x8"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionByBlockHashAndIndex",
+	"params": [
+		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+		"0x8"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -784,6 +749,7 @@ Response
 ```
 
 ### Method `eth_getTransactionByBlockNumberAndIndex`
+
 * `eth_getTransactionByBlockNumberAndIndex(number,position)`
     * `number`: [`BlockId`](#type-BlockId)
 	* `position`: [`U256`](#type-U256)
@@ -793,50 +759,46 @@ Returns information about a transaction by block number and transaction index po
 
 #### Params
 
-*   `number` -  A block number.
-*   `position` - integer of the transaction index position.
+* `number` -  A block number.
+* `position` - integer of the transaction index position.
 
 #### Returns
 
-* Object - A transaction object, or null when no transaction was found:
-	* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
-	* blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
-	* from: DATA, 20 Bytes - address of the sender.
-	* gas: QUANTITY - gas provided by the sender.
-	* gasPrice: QUANTITY - gas price provided by the sender in Wei.
-	* hash: DATA, 32 Bytes - hash of the transaction.
-	* input: DATA - the data send along with the transaction.
-	* nonce: QUANTITY - the number of transactions made by the sender prior to this one.
-	* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-	* transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
-	* value: QUANTITY - value transferred in Wei.
-	* v: QUANTITY - ECDSA recovery id
-	* r: QUANTITY - ECDSA signature r
-	* s: QUANTITY - ECDSA signature s
-
+Object - A transaction object, or null when no transaction was found:
+* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
+* blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
+* from: DATA, 20 Bytes - address of the sender.
+* gas: QUANTITY - gas provided by the sender.
+* gasPrice: QUANTITY - gas price provided by the sender in Wei.
+* hash: DATA, 32 Bytes - hash of the transaction.
+* input: DATA - the data send along with the transaction.
+* nonce: QUANTITY - the number of transactions made by the sender prior to this one.
+* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
+* transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
+* value: QUANTITY - value transferred in Wei.
+* v: QUANTITY - ECDSA recovery id.
+* r: QUANTITY - ECDSA signature r.
+* s: QUANTITY - ECDSA signature s.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionByBlockNumberAndIndex",
-  "params": [
-     "0xb14",
-     "0x8"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionByBlockNumberAndIndex",
+	"params": [
+		"0xb14",
+		"0x8"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -868,9 +830,11 @@ Response
 ```
 
 ## State Methods
+
 State methods report the current state of all the data stored. The "state" is like one big shared piece of RAM, and includes account balances, contract data, and gas estimations.
 
 ### Method `eth_getTransactionCount`
+
 * `eth_getTransactionCount(address,number)`
     * `address`: [`H160`](#type-H160)
     * `number`: [`BlockId`](#type-BlockId)
@@ -878,11 +842,10 @@ State methods report the current state of all the data stored. The "state" is li
 
 Returns the number of transactions sent from an address.
 
-
 #### Params
 
-*   `address` - 20 Bytes - address.
-*   `number` - Integer block number
+* `address` - 20 Bytes, address.
+* `number` - Integer block number.
 
 #### Returns
 
@@ -892,23 +855,20 @@ Returns the number of transactions sent from an address.
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionCount",
-  "params": [
-    "0x92df69a492c93d22c90247434b8d80944daa38fa"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getTransactionCount",
+	"params": [
+		"0x92df69a492c93d22c90247434b8d80944daa38fa"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x12c",
@@ -918,13 +878,13 @@ Response
 ```
 
 ### Method `eth_getBalance`
+
 * `eth_getBalance(address,number)`
     * `address`: [`H160`](#type-H160)
     * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
 
 Returns the balance of the account of given address.
-
 
 #### Params
 
@@ -933,29 +893,26 @@ Returns the balance of the account of given address.
 
 #### Returns
 
-Integer of the current balance in wei.
+Integer of the current balance in Wei.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getBalance",
-  "params": [
-    "0x92df69a492c93d22c90247434b8d80944daa38fa"
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_getBalance",
+	"params": [
+		"0x92df69a492c93d22c90247434b8d80944daa38fa"
+	]
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x8459515c8443cde72e000",
@@ -965,11 +922,11 @@ Response
 ```
 
 ### Method `eth_chainId`
+
 * `eth_chainId()`
 * result: [`U256`](#type-U256)
 
-Returns the chain_id of axon network.
-
+Returns the chain id of axon network.
 
 #### Params
 
@@ -983,23 +940,18 @@ Current chain id.
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_chainId",
-  "params": [
-   
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "eth_chainId",
+	"params": []
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x5",
@@ -1008,11 +960,11 @@ Response
 
 ```
 ### Method `net_version`
+
 * `net_version()`
 * result: [`U256`](#type-U256)
 
 Returns the current network id.
-
 
 #### Params
 
@@ -1026,23 +978,18 @@ String - The current network id.
 
 Request
 
-
-```
+```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "net_version",
-  "params": [
-   
-  ]
+	"id": 1,
+	"jsonrpc": "2.0",
+	"method": "net_version",
+	"params": []
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x5",
@@ -1051,6 +998,7 @@ Response
 
 ```
 ### Method `eth_call`
+
 * `eth_call(req,number)`
     * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
 	* `number`: [`BlockId`](#type-BlockId)
@@ -1058,11 +1006,9 @@ Response
 
 Executes a new message call immediately without creating a transaction on the block chain.
 
-
 #### Params
 
 * `req` - The transaction call object
-
 	* from: DATA, 20 Bytes - (optional) The address the transaction is sent from.
 	* to: DATA, 20 Bytes - The address the transaction is directed to.
 	* gas: QUANTITY - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
@@ -1073,14 +1019,13 @@ Executes a new message call immediately without creating a transaction on the bl
 
 #### Returns
 
- DATA - the return value of executed contract.
+DATA - the return value of executed contract.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_call",
@@ -1091,26 +1036,24 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":1,
-  "jsonrpc": "2.0",
-  "result": "0x"
+	"id":1,
+	"jsonrpc": "2.0",
+	"result": "0x"
 }
 
 ```
 ### Method `eth_estimateGas`
+
 * `eth_estimateGas(req,number)`
     * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
 	* `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256) 
 
 Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.
-
 
 #### Params
 
@@ -1132,8 +1075,7 @@ Generates and returns an estimate of how much gas is necessary to allow the tran
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_call",
@@ -1144,19 +1086,18 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":1,
-  "jsonrpc": "2.0",
-  "result": "0x5208" // 21000
+	"id":1,
+	"jsonrpc": "2.0",
+	"result": "0x5208" // 21000
 }
 
 ```
 ### Method `eth_getCode`
+
 * `eth_getCode(address,block_number)`
     * `address`: [`H160`](#type-H160)
 	* `block_number`: [`BlockId`](#type-BlockId)
@@ -1164,22 +1105,20 @@ Response
 
 Returns code at a given address.
 
-
 #### Params
 
-* `address` - DATA, 20 Bytes - address.
-* `block_number` -A block number.
+* `address` - DATA, 20 Bytes, address.
+* `block_number` - A block number.
 
 #### Returns
 
- The code from the given address.
+The code from the given address.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_getCode",
@@ -1191,26 +1130,24 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":1,
-  "jsonrpc": "2.0",
-  "result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
+	"id":1,
+	"jsonrpc": "2.0",
+	"result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
 }
 
 ```
 
 ### Method `eth_gasPrice`
+
 * `eth_gasPrice()`
     
 * result: [`U256`](#type-U256)
 
-Returns the current price per gas in wei.
-
+Returns the current price per gas in Wei.
 
 #### Params
 
@@ -1218,14 +1155,13 @@ Returns the current price per gas in wei.
 
 #### Returns
 
- Integer of the current gas price in wei.
+Integer of the current gas price in Wei.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_gasPrice",
@@ -1234,11 +1170,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x8",
@@ -1247,12 +1181,12 @@ Response
 ```
 
 ### Method `net_listening`
+
 * `net_listening()`
     
 * result: [`bool`](#type-bool)
 
-Returns true if client is actively listening for network connections. Always return true in Axon network.
-
+Returns true if client is actively listening for network connections. Always return `true` in Axon network.
 
 #### Params
 
@@ -1260,14 +1194,13 @@ Returns true if client is actively listening for network connections. Always ret
 
 #### Returns
 
- Boolean - true when listening, otherwise false.
+ Boolean - `true` when listening, otherwise `false`.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "net_listening",
@@ -1276,11 +1209,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": true,
@@ -1288,14 +1219,14 @@ Response
 }
 ```
 ### Method `eth_mining`
+
 * `eth_mining()`
     
 * result: [`bool`](#type-bool)
 
 Returns true if client is actively mining new blocks. 
 
-*Note:* Always return false in Axon network.
-
+*Note:* Always return `false` in Axon network.
 
 #### Params
 
@@ -1303,14 +1234,13 @@ Returns true if client is actively mining new blocks.
 
 #### Returns
 
- Boolean - returns true of the client is mining, otherwise false. Always return false in Axon network.
+Boolean - returns `true` of the client is mining, otherwise `false`. Always return `false` in Axon network.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_mining",
@@ -1319,11 +1249,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": false,
@@ -1332,12 +1260,12 @@ Response
 ```
 
 ### Method `net_peerCount`
+
 * `net_peerCount()`
     
 * result: [`U256`](#type-U256)
 
 Returns number of peers currently connected to the client.
-
 
 #### Params
 
@@ -1345,14 +1273,13 @@ Returns number of peers currently connected to the client.
 
 #### Returns
 
-  Integer of the number of connected peers.
+Integer of the number of connected peers.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "net_peerCount",
@@ -1361,11 +1288,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x7",
@@ -1374,12 +1299,12 @@ Response
 ```
 
 ### Method `eth_syncing`
+
 * `eth_syncing()`
     
 * result: [`Web3SyncStatus`](#type-Web3SyncStatus) `|` `false`
 
-Returns an object with data about the sync status or false. 
-
+Returns an object with data about the sync status or `false`. 
 
 #### Params
 
@@ -1387,17 +1312,16 @@ Returns an object with data about the sync status or false.
 
 #### Returns
 
-* Object|Boolean, An object with sync status data or FALSE, when not syncing:
-	* startingBlock: QUANTITY - The block at which the import started (will only be reset, after the sync reached his head)
-	* currentBlock: QUANTITY - The current block, same as eth_blockNumber
-	* highestBlock: QUANTITY - The estimated highest block
+Object | Boolean, An object with sync status data or FALSE, when not syncing:
+* startingBlock: QUANTITY - The block at which the import started (will only be reset, after the sync reached his head).
+* currentBlock: QUANTITY - The current block, same as `eth_blockNumber`.
+* highestBlock: QUANTITY - The estimated highest block.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "net_peerCount",
@@ -1406,60 +1330,57 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":1,
-  "jsonrpc": "2.0",
-  "result": {
-    startingBlock: '0x384',
-    currentBlock: '0x386',
-    highestBlock: '0x454'
-  }
+	"id":1,
+	"jsonrpc": "2.0",
+	"result": {
+		startingBlock: '0x384',
+		currentBlock: '0x386',
+		highestBlock: '0x454'
+	}
 }
 ```
 
 Or when not syncing
-```
+```json
 {
-  "id":1,
-  "jsonrpc": "2.0",
-  "result": false
+	"id":1,
+	"jsonrpc": "2.0",
+	"result": false
 }
 
 ```
 
 ### Method `eth_getLogs`
+
 * `eth_getLogs(filter)`
     * `filter`: [`Web3Filter`](#type-Web3Filter)
 * result: `Arrary`[`Web3Log`](#type-Web3Log)
 
 Returns an array of all logs matching a given filter object.
 
-
 #### Params
 
 * Object - The filter options:
-	* fromBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-	* toBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-	* address: DATA|Array, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
-	* topics: Array of DATA, - (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-	* blockhash: DATA, 32 Bytes - (optional, future) With the addition of EIP-234, blockHash will be a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. If blockHash is present in in the filter criteria, then neither fromBlock nor toBlock are allowed.
+    * fromBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+    * toBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+    * address: DATA|Array, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
+    * topics: Array of DATA, - (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
+    * blockhash: DATA, 32 Bytes - (optional, future) With the addition of EIP-234, blockHash will be a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. If blockHash is present in in the filter criteria, then neither fromBlock nor toBlock are allowed.
 
 #### Returns
 
-* Object An object with web3 log data. See [`Web3Log`](#type-Web3Log).
+Object An object with web3 log data. See [`Web3Log`](#type-Web3Log).
 	
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_getLogs",
@@ -1474,11 +1395,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": [{
@@ -1507,11 +1426,11 @@ Response
 ```
 
 ### Method `web3_clientVersion`
+
 * `web3_clientVersion()`  
 * result: [`String`](#type-String) 
 
 Returns the current client version.
-
 
 #### Params
 
@@ -1519,14 +1438,13 @@ Returns the current client version.
 
 #### Returns
 
-String - The current client version
+String - The current client version.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "web3_clientVersion",
@@ -1535,11 +1453,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0.1.0",
@@ -1547,11 +1463,11 @@ Response
 }
 ```
 ### Method `eth_accounts`
+
 * `eth_accounts()`   
-* result: `Array<`[`Hex`](#type-Hex)`>`
+* result: `Array` `<` [`Hex`](#type-Hex) `>`
 
 Returns a list of addresses owned by client.
-
 
 #### Params
 
@@ -1565,8 +1481,7 @@ Array of DATA, 20 Bytes - addresses owned by the client.
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_accounts",
@@ -1575,11 +1490,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -1588,25 +1501,24 @@ Response
 ```
 
 ### Method `web3_sha3`
+
 * `web3_sha3(data)`
     * `data`: [`Hex`](#type-Hex)
 * result: [`Hash`](#type-Hash)
 
 Returns Keccak-256 (not the standardized SHA3-256) of the given data.
 
-
 #### Params
 
-*   `data` - the data to convert into a SHA3 hash
+* `data` - the data to convert into a SHA3 hash.
 
 #### Returns
 
- DATA - The SHA3 result of the given string.
+DATA - The SHA3 result of the given string.
 
 #### Examples
 
 Request
-
 
 ```
 {
@@ -1617,9 +1529,7 @@ Request
 }
 ```
 
-
 Response
-
 
 ```
 {
@@ -1639,23 +1549,21 @@ Response
 
 Returns the value from a storage position at a given address.
 
-
 #### Params
 
-*   `address` - 20 Bytes - address of the storage.
-*   `position` -  integer of the position in the storage.
-*   `number` - A block number.
+* `address` - 20 Bytes - address of the storage.
+* `position` -  integer of the position in the storage.
+* `number` - A block number.
 
 #### Returns
 
-  The value at this storage position.
+The value at this storage position.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "web3_sha3",
@@ -1668,11 +1576,9 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -1687,10 +1593,9 @@ Response
 
 Returns the client coinbase address.
 
-
 #### Params
 
-*   None
+* None
 #### Returns
 
   DATA, 20 bytes - the current coinbase address.
@@ -1699,8 +1604,7 @@ Returns the client coinbase address.
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_coinbase",
@@ -1710,21 +1614,19 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":64,
-  "jsonrpc": "2.0",
-  "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
+	"id":64,
+	"jsonrpc": "2.0",
+	"result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
 }
-
 
 ```
 
 ### Method `eth_hashrate`
+
 * `eth_hashrate()`
 * result: [`U256`](#type-U256) 
 
@@ -1734,17 +1636,16 @@ Returns the number of hashes per second that the node is mining with.
 
 #### Params
 
-*   None
+*  None
 #### Returns
 
-  QUANTITY - number of hashes per second.
+QUANTITY - number of hashes per second.
 
 #### Examples
 
 Request
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"method": "eth_hashrate",
@@ -1754,22 +1655,16 @@ Request
 }
 ```
 
-
 Response
 
-
-```
+```json
 {
-  "id":64,
-  "jsonrpc": "2.0",
-  "result": "0x38a"
+	"id":64,
+	"jsonrpc": "2.0",
+	"result": "0x38a"
 }
 
-
 ```
-
-
-## RPC Erros
 
 ## RPC Types
 
@@ -1777,17 +1672,17 @@ Response
 
 Default block parameters can be one of the following:
 
-* Number|BN|BigNumber: A block number starting from 0.This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON.
+* Number | BN | BigNumber: A block number starting from 0.This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON.
 
-* "earliest" - String: The genesis block
+* "earliest" - String: The genesis block.
 
-* "latest" - String: The latest block (current head of the blockchain)
+* "latest" - String: The latest block (current head of the blockchain).
 
-* "pending" - String: The currently mined block (including pending transactions)
+* "pending" - String: The currently mined block (including pending transactions).
 
 ### `H160`
 
-Fixed-size uninterpreted hash type with hex encoded 20 bytes (160 bits) size.
+Fixed-size uninterpreted hash type with hex encoded 20 bytes size.
 
 #### Example
 
@@ -1801,13 +1696,11 @@ The Hex encoded 32-bytes fixed-length binary data.
 
 The name comes from the number of bits in the data.
 
-
 #### Example
 
 ```
 0x696447c51fdb84d0e59850b26bc431425a74daaac070f2b14f5602fbb469912a
 ```
-
 
 ### `Hex`
 
@@ -1815,7 +1708,7 @@ The name comes from the number of bits in the data.
 
 #### Example
 
-```
+```rust
 0x0 // Decimal Value is 0
 0x10 // Decimal Value is 16
 10 // Invalid, 0x is required
@@ -1827,7 +1720,7 @@ The 32-byte fixed-length binary data.In JSONRPC, it is Hex encoded as a 0x-prefi
 
 #### Example
 
-```
+```rust
 0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65
 ```
 
@@ -1839,7 +1732,7 @@ The String type is the most common string type that has ownership over the conte
 
 #### Example
 
-```
+```rust
 "0.1.0"
 ```
 
@@ -1851,14 +1744,15 @@ The bool represents a value, which could only be either true or false. If you ca
 
 #### Example
 
-```
+```rust
 true
 ```
+
 or
-```
+
+```rust
 1
 ```
-
 
 ### `Bloom`
 
@@ -1870,7 +1764,6 @@ A 64-bit floating point type (specifically, the "binary64" type defined in IEEE 
 
 This type is very similar to f32, but has increased precision by using twice as many bits. Please see the documentation for f32 or Wikipedia on double precision values for more information.
 
-
 ### `U64`
 
 Unsigned 64-bit integer.
@@ -1878,7 +1771,6 @@ Unsigned 64-bit integer.
 ### `U256`
 
 Little-endian large integer type 256-bit unsigned integer.
-
 
 ### `TransactionView`
 
@@ -1888,52 +1780,30 @@ The TransactionView objects.
 
 `TransactionView` is a JSON object with the following fields.
 
-
 *   `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
-
 *   `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
-
 *   `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
-
 *   `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
-
 *   `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
-
 *   `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
-
 *   `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
-
 *   `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
-
 *   `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
-
 *   `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
-
 *   `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
-
 *   `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
-
-*   `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form
-
+*   `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form.
 *   `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
-
 *   `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
-
 *   `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-
 *   `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
-
 *   `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
-
 *   `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
-
 *   `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
-
 
 #### Examples
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -1972,50 +1842,27 @@ The BlockView objects.
 `BlockView` is a JSON object with the following fields.
 
 *   `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
-
 *   `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
-
 *   `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
-
 *   `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
-
 *   `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-
 *   `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
-
 *   `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
-
 *   `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
-
 *   `number`: [`U256`](#type-U256)  - QUANTITY - the block number. null when its pending block.
-
 *   `gas_used`: [`U256`](#type-U256)  - QUANTITY - the total used gas by all transactions in this block.
-
 *   `gas_limit`: [`U256`](#type-U256)  - QUANTITY - the maximum gas allowed in this block.
-
 *   `extra_data`: [`Hex`](#type-Hex)  - DATA - the "extra data" field of this block.
-
 *   `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-
 *   `timestamp`: [`U256`](#type-U256)  - QUANTITY - the unix timestamp for when the block was collated.
-
 *   `difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the difficulty for this block.
-
 *   `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
-
 *   `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
-
 *   `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
-
 *   `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
-
 *   `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
-
 *   `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes -  a unique identifier for that block.
-
 *   `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
-
-
 
 ### `Web3Filter`
 
@@ -2025,28 +1872,15 @@ The Web3Filter objects.
 
 `Web3Filter` is a JSON object with the following fields.
 
-*   `from_block`: [`BlockId`](#type-BlockId) - [optional, default is "latest"] 
-
+*   `from_block`: [`BlockId`](#type-BlockId) - [optional, default is "latest"], hexadecimal block number, or the string "latest", "earliest" or "pending"
+*   `to_block`:  [`BlockId`](#type-BlockId) - [optional, default is "latest"] ,
 	hexadecimal block number, or the string "latest", "earliest" or "pending"
 
-*   `to_block`:  [`BlockId`](#type-BlockId) - [optional, default is "latest"] 
+*   `block_hash`: [`H256`](#type-H256) - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash. 
 
-	hexadecimal block number, or the string "latest", "earliest" or "pending"
+*   `address`: [`H256`](#type-H256)  - [optional] - a string representing the address (20 bytes) to check for balance. Null when its pending. Null when its pending log.
 
-*   `block_hash`: [`H256`](#type-H256) - [optional] With the addition of EIP-234, blockHash 		restricts the logs returned to the single block with the 32-byte hash blockHash. 
-
-	UsingblockHash is equivalent to.    
-
-*   `address`: [`H256`](#type-H256)  - [optional] - a string representing the address (20 bytes) to check for balance
-
-	null when its pending. 
-
-	null when its pending log.
-
-*   `topics`: `Array<`[`Hash`](#type-Hash)`>` - [optional] - Array of 32 Bytes DATA topics. 
-
-	Topics are order-dependent.
-
+*   `topics`: `Array<`[`Hash`](#type-Hash)`>` - [optional] - Array of 32 Bytes DATA topics. Topics are order-dependent.
 
 ### `AccessList`
 
@@ -2057,7 +1891,6 @@ The AccessList objects.
 `AccessList` is a JSON object with the following fields.
 
 *   `AccessList`: `Arrar<`[`AccessListItem`]`>`(#type-AccessListItem) - A list of addresses and storage keys.
-
 
 ### `AccessListItem`
 
@@ -2071,8 +1904,6 @@ The AccessListItem objects.
 
 *   `storage_keys`: `Arrar<`[`H256`]`>`(#type-H256) - DATA, Hex encoded 32 Bytes - The storage keys is added into the accessed_storage_keys global sets.
 
-
-
 ### `TransactionView`
 
 The TransactionView objects.
@@ -2081,52 +1912,30 @@ The TransactionView objects.
 
 `TransactionView` is a JSON object with the following fields.
 
-
-*   `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
-
+*   `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930  is `0x1` and Eip1559 is `0x2`.
 *   `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
-
 *   `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
-
 *   `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
-
 *   `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
-
 *   `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
-
 *   `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
-
 *   `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
-
 *   `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
-
 *   `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
-
 *   `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
-
 *   `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
-
 *   `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form
-
 *   `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
-
 *   `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
-
 *   `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-
 *   `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
-
 *   `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
-
 *   `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
-
 *   `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
-
 
 #### Example
 
-
-```
+```json
 {
 	"jsonrpc": "2.0",
 	"result": {
@@ -2165,49 +1974,27 @@ The BlockView objects.
 `BlockView` is a JSON object with the following fields.
 
 *   `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
-
 *   `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
-
 *   `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
-
 *   `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
-
 *   `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-
 *   `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
-
 *   `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
-
 *   `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
-
-*   `number`: [`U256`](#type-U256)  - QUANTITY - the block number. null when its pending block.
-
-*   `gas_used`: [`U256`](#type-U256)  - QUANTITY - the total used gas by all transactions in this block.
-
-*   `gas_limit`: [`U256`](#type-U256)  - QUANTITY - the maximum gas allowed in this block.
-
-*   `extra_data`: [`Hex`](#type-Hex)  - DATA - the "extra data" field of this block.
-
+*   `number`: [`U256`](#type-U256)  - QUANTITY, the block number. null when its pending block.
+*   `gas_used`: [`U256`](#type-U256)  - QUANTITY, the total used gas by all transactions in this block.
+*   `gas_limit`: [`U256`](#type-U256)  - QUANTITY, the maximum gas allowed in this block.
+*   `extra_data`: [`Hex`](#type-Hex)  - DATA, the "extra data" field of this block.
 *   `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-
-*   `timestamp`: [`U256`](#type-U256)  - QUANTITY - the unix timestamp for when the block was collated.
-
-*   `difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the difficulty for this block.
-
+*   `timestamp`: [`U256`](#type-U256)  - QUANTITY, the unix timestamp for when the block was collated.
+*   `difficulty`: [`U256`](#type-U256)  - QUANTITY, integer of the difficulty for this block.
 *   `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
-
 *   `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
-
 *   `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
-
 *   `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
-
 *   `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
-
-*   `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes -  a unique identifier for that block.
-
+*   `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes, a unique identifier for that block.
 *   `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
-
 
 ### `Web3Log`
 
@@ -2218,35 +2005,17 @@ The Web3Log log objects.
 `Web3Log` is a JSON object with the following fields.
 
 *   `address`: [`H160`](#type-H160) - Hex encoded 20 Bytes - address from which this log originated.
+*   `topics`: `Array<`[`H256`](#type-H256)`>` - Array of 0 to 4 32 Bytes of indexed log arguments. 
 
-*   `topics`: `Array<`[`H256`](#type-H256)`>` - Array of 0 to 4 32 Bytes of indexed log 			arguments. 
-
-	In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declared the event with the anonymous specifier.
+    >In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declared the event with the anonymous specifier.
 
 *   `data`:  [`Hex`](#type-Hex) - contains one or more 32 Bytes non-indexed arguments of the log.
-
-*   `block_hash`: [`H256`](#type-H256)  - [optional] With the addition of EIP-234, blockHash 		restricts the logs returned to the single block with the 32-byte hash blockHash. 
-
-	UsingblockHash is equivalent to.    
-
-*   `block_number`: [`U256`](#type-U256)  - the block number where this log was in. 
-
-	null when its pending. 
-
-	null when its pending log.
-
-*   `transaction_hash`: [`H256`](#type-H256) - Hex encoded 32 Bytes, hash of the transactions this log 		was created from. null when its pending log..
-
-*   `transaction_index`: [`U256`](#type-U256) - hexadecimal of the transactions index 				position log was created from. 
-
-	null when its pending log.
-
-*   `log_index`: [`U256`](#type-U256)  - hexadecimal of the log index position in the block.
-
- 	null when its pending log.
-
-*   `removed`: [`bool`](#type-bool)  - true when the log was removed, due to a chain				reorganization. false if it's a valid log.
-
+*   `block_hash`: [`H256`](#type-H256)  - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash.   
+*   `block_number`: [`U256`](#type-U256)  - the block number where this log was in. Null when its pending. Null when its pending log.
+*   `transaction_hash`: [`H256`](#type-H256) - Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
+*   `transaction_index`: [`U256`](#type-U256) - hexadecimal of the transactions index  position log was created from. Null when its pending log.
+*   `log_index`: [`U256`](#type-U256)  - hexadecimal of the log index position in the block. Null when its pending log.
+*   `removed`: [`bool`](#type-bool)  - true when the log was removed, due to a chain	reorganization. false if it's a valid log.
 
 ### `Web3SyncStatus`
 
@@ -2256,11 +2025,9 @@ The Web3SyncStatus objects.
 
 `Web3SyncStatus` is a JSON object with the following fields.
 
-*   `starting_block`: [`U256`](#type-U256) - QUANTITY - The block at which the import started (will only be reset, after the sync reached his head)
-
-*   `current_block`:  [`U256`](#type-U256) - QUANTITY - The current block, same as eth_blockNumber.
-
-*   `highest_block`:  [`U256`](#type-U256) -QUANTITY - The estimated highest block.
+*   `starting_block`: [`U256`](#type-U256) - QUANTITY, the block at which the import started (will only be reset, after the sync reached his head).
+*   `current_block`:  [`U256`](#type-U256) - QUANTITY, the current block, same as eth_blockNumber.
+*   `highest_block`:  [`U256`](#type-U256) -QUANTITY, the estimated highest block.
 
 ### `Web3CallRequest`
 
@@ -2270,30 +2037,17 @@ The Web3CallRequest objects.
 
 `Web3CallRequest` is a JSON object with the following fields.
 
-*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
-
-*   `from`:[`H160`](#type-H256) - Hex encoded 20 Bytes - The address the transaction is sent from.
-
-*   `to`:  [`H160`](#type-H160) - Hex encoded 20 Bytes - The address the transaction is directed to.
-
+*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559  is `0x2`.
+*   `from`:[`H160`](#type-H256) - Hex encoded 20 Bytes, the address the transaction is sent from.
+*   `to`:  [`H160`](#type-H160) - Hex encoded 20 Bytes, the address the transaction is directed to.
 *   `gas_price`: [`U256`](#type-U256)  - [optional] hexadecimal value of the gasPrice used for each paid gas.
-
 *   `max_fee_per_gas`: [`U256`](#type-U256)  - [optional] Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas.
-
-*   `gas`: [`U256`](#type-U256) -  [optional] hexadecimal value of the gas provided for the 		transaction execution. 
-
-	eth_call consumes zero gas, but this parameter may be needed by some executions.
-
-*   `value`: [`U256`](#type-U256) - [optional] hexadecimal value of the value sent with this 		transaction.
-
+*   `gas`: [`U256`](#type-U256) -  [optional] hexadecimal value of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions.
+*   `value`: [`U256`](#type-U256) - [optional] hexadecimal value of the value sent with this transaction.
 *   `data`: [`Hex`](#type-Hex)  - [optional] Hash of the method signature and encoded parameters.
-
 *   `nonce`: [`U256`](#type-U256)  - Nonce is a sequence number, issued by the originating externally owned account, used to prevent message replay.
-
 *   `access_list`: `Array<` [`AccessList`](#type-AccessList)`>`  - The accessList specifies a list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-
 *   `max_priority_fee_per_gas`: [`U256`](#type-U256)  -  QUANTITY - (optional) determined by the user, and is paid directly to miners.
-
 
 ### `Web3FeeHistory`
 
@@ -2304,13 +2058,9 @@ The Web3FeeHistory objects.
 `Web3FeeHistory` is a JSON object with the following fields.
 
 *   `oldest_block`: [`U256`](#type-U256) - Lowest number block of the returned range.
-
 *   `reward`:  `Arrary<`[`U256`](#type-U256)`>` - (Optional) An array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
-
-*   `base_fee_per_gas`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block base fees per gas. 	This includes the next block after the newest of the returned range, because this value can be derived from the newest block. 
-	Zeroes are returned for pre-EIP-1559 blocks.
-
-*   `gas_used_ratio`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block gas used ratios. 		These are calculated as the ratio of gasUsed and gasLimit.
+*   `base_fee_per_gas`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block base fees per gas. 	This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.
+*   `gas_used_ratio`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit.
 
 ### `Web3Receipt`
 
@@ -2321,35 +2071,20 @@ The Web3Receipt objects.
 `Web3Receipt` is a JSON object with the following fields.
 
 *   `block_number`: [`U256`](#type-U256) - QUANTITY - block number where this transaction was in.
-
 *   `block_hash`: [`H256`](#type-H256) - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in.
-
 *   `contract_address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null.
-
-*   `cumulative_gas_used`: [`U256`](#type-U256) - QUANTITY - The total amount of gas used when this transaction was executed in the block.
-
-*   `effective_gas_price`: [`U256`](#type-U256) - QUANTITY - the price per gas at the time of your transaction, so the total gas cost of your transaction is effectiveGasPrice * gasUsed
-
-*   `from`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - address of the sender.
-
+*   `cumulative_gas_used`: [`U256`](#type-U256) - QUANTITY, the total amount of gas used when this transaction was executed in the block.
+*   `effective_gas_price`: [`U256`](#type-U256) - QUANTITY, the price per gas at the time of your transaction, so the total gas cost of your transaction is effectiveGasPrice * gasUsed
+*   `from`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the sender.
 *   `gas_used`: [`U256`](#type-U256) - QUANTITY - The amount of gas used by this specific transaction alone.
-
-*   `logs`:  `Arrary<`[`Web3ReceiptLog`](#type-Web3ReceiptLog)`>` - Array - Array of log objects, which this transaction generated.
-
-*   `logs_bloom`: [`Bloom`](#type-Bloom) - DATA, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs.
-
+*   `logs`:  `Arrary<`[`Web3ReceiptLog`](#type-Web3ReceiptLog)`>` - Array, array of log objects, which this transaction generated.
+*   `logs_bloom`: [`Bloom`](#type-Bloom) - DATA, 256 Bytes, bloom filter for light clients to quickly retrieve related logs.
 *   `state_root`: [`Hash`](#type-Hash) - DATA 32 bytes of post-transaction stateroot (pre Byzantium)
-
 *   `status`: [`U256`](#type-U256) - QUANTITY either 1 (success) or 0 (failure)
-
-*   `to`: [`H160`](#type-H160)- DATA, Hex encoded 20 Bytes - address of the receiver. null when its a contract creation transaction.
-
+*   `to`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the receiver. null when its a contract creation transaction.
 *   `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes - hash of the transaction.
-
 *   `transaction_index`: [`U256`](#type-U256) - QUANTITY - integer of the transactions index position in the block.
-
-*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
-
+*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559 is `0x2`.
 
 ### `Web3ReceiptLog`
 
@@ -2359,21 +2094,13 @@ The Web3ReceiptLog objects.
 
 `Web3ReceiptLog` is a JSON object with the following fields.
 
-*   `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - address from which this log originated.
-
-*   `topics`: `Arrary<`[`H256`](#type-H256)`>` - Array of DATA - Array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
-	* In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.
-
-*   `data`: [`Hex`](#type-Hex)`>` - DATA - contains one or more 32 Bytes non-indexed arguments of the log.
-
-*   `block_number`: [`U256`](#type-U256) - QUANTITY - the block number where this log was in. null when its pending. null when its pending log.
-
-*   `block_hash`: [`Hash`](#type-Hash) - DATA, Hex encode 32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log.
-
-*   `transaction_hash`: [`Hash`](#type-Hash)`>` - DATA, Hex encoded 32 Bytes - hash of the transactions this log was created from. null when its pending log.
-
-*   `transaction_index`: [`U256`](#type-U256) - QUANTITY - integer of the transactions index position log was created from. null when its pending log.
-
-*   `log_index`:  [`U256`](#type-U256)`>` - QUANTITY - integer of the log index position in the block. null when its pending log.
-
-*   `removed`: [`bool`](#type-bool) - TAG - true when the log was removed, due to a chain reorganization. false if its a valid log.
+*   `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address from which this log originated.
+*   `topics`: `Arrary` `<`[`H256`](#type-H256)`>` - Array of DATA, array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
+	> In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.
+*   `data`: [`Hex`](#type-Hex) - DATA - contains one or more 32 Bytes non-indexed arguments of the log.
+*   `block_number`: [`U256`](#type-U256) - QUANTITY, the block number where this log was in. null when its pending. null when its pending log.
+*   `block_hash`: [`Hash`](#type-Hash) - DATA, Hex encode 32 Bytes, hash of the block where this log was in. null when its pending. null when its pending log.
+*   `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
+*   `transaction_index`: [`U256`](#type-U256) - QUANTITY, integer of the transactions index position log was created from. null when its pending log.
+*   `log_index`:  [`U256`](#type-U256) - QUANTITY, integer of the log index position in the block. null when its pending log.
+*   `removed`: [`bool`](#type-bool) - TAG, `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.
