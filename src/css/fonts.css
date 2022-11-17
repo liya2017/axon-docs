@@ -1,0 +1,78 @@
+/* montserrat */
+@font-face {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-Regular.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: italic;
+  font-weight: 400;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-Italic.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-Light.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: italic;
+  font-weight: 300;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-LightItalic.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-Medium.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: italic;
+  font-weight: 500;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-MediumItalic.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-SemiBold.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: italic;
+  font-weight: 600;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-SemiBoldItalic.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-Bold.woff) format('woff')
+}
+
+@font-face {
+  font-family: montserrat;
+  font-style: italic;
+  font-weight: 700;
+  src: local('Montserrat'), url(../fonts/montserrat/Montserrat-BoldItalic.woff) format('woff')
+}
+
+/* monaco */
+@font-face {
+  font-family: monaco;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Monaco'), url(../fonts/Monaco.woff) format('woff')
+}
