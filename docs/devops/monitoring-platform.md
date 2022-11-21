@@ -1,5 +1,5 @@
 ---
-title: DevOps
+title: Monitoring Platform
 hide_title: true
 sidebar_position: 1
 ---
