@@ -302,6 +302,11 @@ div:has(>.card) {
   height: 36px;
 }
 
+.feedback-contribute .text {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
 .feedback-contribute, .ecosystem-documentation {
   margin-top: 8px;
 }
@@ -420,6 +425,10 @@ ul.footer__items:has(#footer-links-placeholder) {
 
 #footer-links-placeholder a {
   margin: .6rem;
+}
+
+#footer-links-placeholder > a:first-child {
+  margin-left: 6rem;
 }
 
 #footer-links-placeholder a:hover {

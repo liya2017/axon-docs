@@ -31,7 +31,7 @@ export default function ImageCard({title, light, dark, url, description, imagePo
                 }
             </Link>
             {typeof (description) === 'string' ?
-                <p style={{color: '#666666', fontSize: '13px'}}>{description}</p> :
+                <p style={{color: '#666666', fontSize: '14px'}}>{description}</p> :
                 description
             }
         </div>

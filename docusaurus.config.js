@@ -88,7 +88,7 @@ const config = {
             ],
           }
         ],
-        copyright: 'This website is maintained by axon.',
+        copyright: 'This website is maintained by Axonweb3.',
       },
       prism: {
         theme: lightCodeTheme,
