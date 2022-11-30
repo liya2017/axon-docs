@@ -36,7 +36,7 @@ Find traits in: `protocol/src/traits/storage.rs`; find the implementation in `co
 
 The storage folder (location:`core/storage/src`) contains the folder adapter and four files: cache.rs, libs.rs, hash_key.rs, schema.rs.
 
-<img src={useBaseUrl("img/for-contributors/Fig. file structure.png")}/>
+<img src={useBaseUrl("img/for-contributors/Fig. file structure.png")} width="30%"/>
 
 ### Folder adapter
 

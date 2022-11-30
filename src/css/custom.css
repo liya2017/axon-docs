@@ -25,6 +25,7 @@
   --docsearch-searchbox-background: #f3f3f3 !important;
   --ifm-global-shadow-lw: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
   --axon-disabled-background-color: #f2f3f3;
+  --markdown-img-background-color: #ffffff;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -43,6 +44,7 @@
   --ifm-footer-background-color: #212126;
   --docsearch-searchbox-background: #28282c !important;
   --axon-disabled-background-color: #212126;
+  --markdown-img-background-color: #28282c;
 }
 
 /* font-size */
@@ -58,7 +60,7 @@ body {
 
 .markdown:not(:has(#homepage)) img {
   padding: 1px;
-  background-color: #28282c;
+  background-color: var(--markdown-img-background-color);
 }
 
 h1 {
@@ -91,7 +93,7 @@ strong {
 
 em {
   font-size: 10px;
-  font-style: normal;
+  font-style: italic;
   font-weight: 600;
 }
 
