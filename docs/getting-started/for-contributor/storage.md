@@ -12,7 +12,7 @@ Axon’s storage module works as a bridge between Axon and its database interfac
 
 Located at the bottom of Axon's architecture, the storage module serves as the block and state databases, as depicted below:
 
-<img src={useBaseUrl("Fig1 overall architecture.png")}/>
+<img src={useBaseUrl("img/for-contributors/Fig1 overall architecture.png")}/>
 
 *Figure 1. A high-level view of Axon’s overall architecture and the location of the storage module*
 
@@ -22,7 +22,7 @@ The purpose of this article is to introduce the basics of Axon's storage module 
 
 Axon storage module ([GitHub repo](https://github.com/axonweb3/axon/tree/dc9de2220a42d61ed2b4e6624ef5faf6a64a6223/core/storage)) is used to store persistent data.
 
-<img src={useBaseUrl("Fig2 storage module design.png")}/>
+<img src={useBaseUrl("img/for-contributors/Fig2 storage module design.png")}/>
 
 *Figure 2. The design of Axon’s storage module and other related components*
 
@@ -36,7 +36,7 @@ Find traits in: `protocol/src/traits/storage.rs`; find the implementation in `co
 
 The storage folder (location:`core/storage/src`) contains the folder adapter and four files: cache.rs, libs.rs, hash_key.rs, schema.rs.
 
-<img src={useBaseUrl("Fig. file structure.png")}/>
+<img src={useBaseUrl("img/for-contributors/Fig. file structure.png")}/>
 
 ### Folder adapter
 
