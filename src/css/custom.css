@@ -448,6 +448,11 @@ footer .footer__bottom {
   margin: 0 auto;
 }
 
+.axon-anno {
+  font-size: 14px;
+  font-style: italic;
+}
+
 @media (max-width: 996px) {
   .text {
     padding: 0 16px 16px !important;

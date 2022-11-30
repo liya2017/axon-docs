@@ -14,7 +14,7 @@ Located at the bottom of Axon's architecture, the storage module serves as the b
 
 <img src={useBaseUrl("img/for-contributors/Fig1 overall architecture.png")}/>
 
-*Figure 1. A high-level view of Axon’s overall architecture and the location of the storage module*
+<p class="axon-anno">Figure 1. A high-level view of Axon’s overall architecture and the location of the storage module</p>
 
 The purpose of this article is to introduce the basics of Axon's storage module and how the decoupling mechanism works. Some implementation details and code examples will be given as well.
 
@@ -24,7 +24,7 @@ Axon storage module ([GitHub repo](https://github.com/axonweb3/axon/tree/dc9de22
 
 <img src={useBaseUrl("img/for-contributors/Fig2 storage module design.png")}/>
 
-*Figure 2. The design of Axon’s storage module and other related components*
+<p class="axon-anno">Figure 2. The design of Axon’s storage module and other related components</p>
 
 Storage module connects memory or databases through the adapter pattern, as shown in the diagram above. This adapter plays a central role in data decoupling. First, it decouples Axon from other databases. When new databases are added, you only need to implement their corresponding traits. As soon as they are abstracted into a trait, other Axon modules can interact with Axon's database. 
 
@@ -80,7 +80,7 @@ pub trait IbcCrossChainStorage {
 
     fn get_client_state(&self, client_id: &ClientId) -> ProtocolResult<Option<AnyClientState>>;
 
-// ...other functions
+    // ...other functions
 }
 ```
 
@@ -103,6 +103,6 @@ impl<Adapter: StorageAdapter> IbcCrossChainStorage for ImplStorage<Adapter> {
             .get::<ClientStateSchema>(IbcWrapper(ClientStatePath(client_id.clone())))?
             .map(|res| res.0))
     }
-// ...other implements
+    // ...other implements
 }
 ```
