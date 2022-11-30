@@ -56,11 +56,11 @@ It defines the data structure used to implement the cache function.
 
 It is used to manage the implementation of traits related to data reading and writing in other modules.
 
-### hash_key.rs:
+### hash_key.rs
 
 It is used to generate the hash type of the database key.
 
-### schema.rs:
+### schema.rs
 
 It is used to manage the formatting of database entries.
 
