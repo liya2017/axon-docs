@@ -65,11 +65,11 @@ Monitor server is mainly for displaying the data of metrics and traces.
 
 - **prometheus**: collects Axon metrics which will be displayed as a datasource in Grafana.
 - **jaeger-collector**: receives data pushed by jaeger-agent which will be displayed as a datasource in Grafana.
-- **elacticsearch**: collects and stores Axon‘s logs, which will be displayed as a datasource in Grafana. Elacticsearch filters error logs and sends alerts through ES-alert (the alerting for Elasticsearch) in accordance with previously defined rules. (Please be aware that Elasticsearch may consume a lot of machine memory.)
+- **elasticsearch**: collects and stores Axon‘s logs, which will be displayed as a datasource in Grafana. Elasticsearch filters error logs and sends alerts through ES-alert (the alerting for Elasticsearch) in accordance with previously defined rules. (Please be aware that Elasticsearch may consume a lot of machine memory.)
 
 ### Monitor Dashboard
 
-- **Grafana**: uses Promethues, jeager, and elacticsearch as datasources and displays data in dashboard, monitors, and logs.
+- **Grafana**: uses Promethues, jaeger, and elasticsearch as datasources and displays data in dashboard, monitors, and logs.
 
 ## Deploy Monitor and Monitor Agent
 
