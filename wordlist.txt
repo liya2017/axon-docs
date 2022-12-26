@@ -187,3 +187,4 @@ ip
 de
 facto
 datasources
+localhost

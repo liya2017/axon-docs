@@ -20,13 +20,11 @@ Axon-cli heavily relies on `docker`, make sure that you have installed it. To ru
 
 Start by cloning Axon-cli from the [GitHub repo](https://github.com/axonweb3/axon-cli) by command:
 
-
 ```bash
 git clone https://github.com/axonweb3/axon-cli.git
 ```
 
 Enter into Axon-cli directory
-
 
 ```bash
 cd axon-cli
@@ -39,7 +37,6 @@ cargo build --release
 ```
 
 Now your basic Axon-cli development environment is ready. Enter the Axon-cli interface by running the following command:
-
 
 ```bash
 ./target/release/axon-cli
@@ -61,7 +58,7 @@ To start multiple nodes, use `-n` argument to specify nodes number:
 axon keygen -n <NUMBER OF NODE>
 ```
 
-Then, we need to generate config files from these key paris:
+Then, we need to generate config files from these key pairs:
 
 ```bash
 axon config-gen

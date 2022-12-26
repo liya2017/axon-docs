@@ -6,7 +6,6 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-
 # Monitoring Platform
 
 ## Black box, monitoring system, and observability
@@ -49,7 +48,6 @@ Axon's monitoring platform contains Agent (Axon node), monitor server, and monit
 
 <p class="axon-anno">Figure 1. Overall design of Axon’s monitoring platform</p>
 
-
 ### Agent (Axon node)
 
 Agent, or Axon node, is for collecting monitoring metrics and interacting with the monitor server.
@@ -79,7 +77,7 @@ Axon application performance monitoring (apm) supports one-click deployment of m
 
 **Step 1** Copy `axon-devops` to the target machine.
 
-```
+```bash
 git clone https://github.com/axonweb3/axon-devops
 cd axon-devops/apm/monitor
 ```
@@ -107,13 +105,13 @@ global:
 
 `roles/monitor/vars/main.yml`: mainly used as the parameters required by [Ansible](https://www.ansible.com/) when deploying the monitor. 
 
-```
+```yml
 monitor_dir: /home/ckb/axon-monitor
 ```
 
 **Step 3** Execute monitor deployment command.
 
-```
+```bash
 cd axon-devops/apm/deploy
 make monitor-clean # Stop monitor service（History data will be cleared. Use carefully）
 make monitor-deploy # Start monitor service
@@ -124,7 +122,7 @@ docker-compose ps # Check if service is seccessfully started.
 
 **Step 1** Copy axon-devops directory to the target machine
 
-```
+```bash
 git clone https://github.com/axonweb3/axon-devops
 cd axon-devops/apm/agent
 ```
@@ -133,7 +131,7 @@ cd axon-devops/apm/agent
 
 - `.env`: sets environment variables that are used when running the `docker-compose.yml`
 
-```
+```yml
 JAEGER_COLLECTOR_IP=jaeger-collector:14250 
 # Used to push data to the jaeger server.
 # Configure the ip port for jaeger-collector.
@@ -152,8 +150,7 @@ AXON_LOG_PATH=axon/logs
 
 - `filebeat.yml`: used to build structured configurations for lists and dictionaries
 
-```
-yml
+```yml
 filebeat.inputs:
 
 - type: log
@@ -187,7 +184,7 @@ filebeat.inputs:
 
 - `axon-devops/apm/deploy/roles/agent/vars/main.yaml`
 
-```
+```yml
 monitor_agent_dir: /home/ckb/axon-apm-agent 
 # Copy the command to the target file storage section
 
@@ -200,14 +197,11 @@ es_address: XXX.XX.XX.XX
 
 - axon-devops/apm/deploy/hosts
 
-```
+```toml
 # Configure monitor agent deployment
 
 [axon_node] 
 # Monitor agent deployment follows axon agent. Here axon node ip must be specified.
-XXX.XXX.XXX.XXX
-XXX.XXX.XXX.XXX
-XXX.XXX.XXX.XXX
 XXX.XXX.XXX.XXX
 
 [prometheus_server]
@@ -221,7 +215,7 @@ prometheus_server
 
 **Step 3** Execute Monitor Agent deployment command
 
-```
+```bash
 cd axon-devops/apm/deploy
 make clean 
 # Clear axon monitor agent
