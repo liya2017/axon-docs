@@ -73,7 +73,7 @@ The following code shows how to check transaction address in Axon:
 
 If  `Call(H160)` = `0xffffffffffffffffffffffffffffffffffffff00`, then it is a NativeTokenContract address;
 
-If `Call(H160)` = `[0xb484fd480e598621638f380f404697cd9f58b0f8] (https://github.com/axonweb3/axon/blob/main/devtools/chain/config.toml#L10)`, then it is the cross-chain address.
+If `Call(H160)` = [`0xb484fd480e598621638f380f404697cd9f58b0f8`](https://github.com/axonweb3/axon/blob/main/devtools/chain/config.toml#L10), then it is the cross-chain address.
 
 The system mempool and general mempool are two mutually independent modules. Packaging and sorting in the system mempool are separated from general transactions.
 
