@@ -88,12 +88,12 @@ const config = {
             ],
           }
         ],
-        copyright: 'This website is maintained by Axonweb3.',
+        copyright: 'This website is maintained by AxonWeb3.',
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'solidity'],
       },
     }),
 };

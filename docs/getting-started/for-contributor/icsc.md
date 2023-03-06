@@ -1,12 +1,12 @@
 ---
-title: Image Cell System Contract (ICSC)
+title: Image Cell System Contract
 hide_title: true
 sidebar_position: 6
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Image Cell System Contract (ICSC): Storing CKB Cells in Axon
+# Image Cell System Contract
 
 Common Knowledge Base (CKB) is the base layer of Nervos, a multi-layered blockchain network; Axon is a 100% EVM-compatible, high-performance layer 2 framework built on top of CKB. CKB [cells](https://docs.nervos.org/docs/reference/cell/) serve as the basic units for data storage, including smart contracts. Being able to access CKB cells could significantly improve Axon's interoperability.
 
@@ -18,8 +18,8 @@ As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/
 
 Axon application developers can access CKB cells already stored in ICSC by using a precompiled contract located at address 0xf0. The usage is as follows.
 
-```
-// The address 0xf0 implements the function of geting cell.
+```solidity
+// The address 0xf0 implements the function of getting cell.
 // `CellProvider` can be renamed, but `getCell` cannot.
 interface CellProvider {
     function getCell(bytes32 txHash, uint32 index) external returns (Cell memory cell);
@@ -32,6 +32,7 @@ contract CellProviderContract {
     }
 }
 ```
+
 For more details, please see [here](https://github.com/felicityin/axon-get-cell/blob/main/contracts/CellProviderContract.sol).
 
 ## Synchronizing CKB Cells To Axon: A Flow Overview
@@ -70,7 +71,8 @@ The workflow can be summarized as follows:
 The IBC Relayer sends ETH transactions to Axon, which packs CKB cells.
 
 To view the transaction details, let's examine the [definition](https://github.com/axonweb3/axon/blob/main/core/executor/src/system_contract/image_cell/contract/contracts/ImageCell.sol) of ICSC.
-```
+
+```solidity
 contract ImageCell {
     function update(
         CkbType.OutPoint[] calldata inputs,
@@ -83,6 +85,7 @@ contract ImageCell {
     ) public view {}
 }
 ```
+
 - `update()` : update the ICSC MPT with data relayed from CKB, including block headers and cells.
     - `inputs` : cells consumed in CKB, also need to be marked as consumed in the ICSC MPT.
     - `outputs` : cells created in CKB, also need to be saved in the ICSC MPT.
@@ -95,20 +98,22 @@ As mentioned earlier, ICSC has built a separate MPT to save space in the EVM MPT
 The `ImageCell` is only used for generating Rust bindings to parse transaction data. This will be explained further in the next section.
 
 ### Decode Transaction Data
-After receiving the transactions sent by the IBC Relayer, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the `[abigen](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html)` macro or the `[Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`. 
+After receiving the transactions sent by the IBC Relayer, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro or the [`Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`. 
 
-1. Generate Ethereum contract ABI (Application Binary Interface) using `[hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts)` or `[solc](https://docs.soliditylang.org/en/latest/installing-solidity.html)`. 
-Take `[hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts)` as the example, after compiling the contracts, an ABI will be generated automatically and saved in the file `artifacts/contracts/ImageCell.sol/ImageCell.json`. Open the file and find the key `abi`, whose value is what we need.
-2. Generate type-safe bindings from Ethereum contract ABI using the `[abigen](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html)` macro, or the `[Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
+1. Generate Ethereum contract ABI (Application Binary Interface) using [hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) or [solc](https://docs.soliditylang.org/en/latest/installing-solidity.html). 
+Take [hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) as the example, after compiling the contracts, an ABI will be generated automatically and saved in the file `artifacts/contracts/ImageCell.sol/ImageCell.json`. Open the file and find the key `abi`, whose value is what we need.
+2. Generate type-safe bindings from Ethereum contract ABI using the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro, or the [`Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
 
 With the Rust binding to contract `ImageCell`, we can decode transaction data, as shown in the following example:
-```
-fn exec_<B: Backend + ApplyBackend>(&self, backend: &mut B, tx: &SignedTransaction) -> TxResp {
-        let tx = &tx.transaction.unsigned;
-        let tx_data = tx.data();
 
-        match image_cell_abi::ImageCellCalls::decode(tx_data) {
-        ...
+```rust
+fn exec_<B: Backend + ApplyBackend>(&self, backend: &mut B, tx: &SignedTransaction) -> TxResp {
+    let tx = &tx.transaction.unsigned;
+    let tx_data = tx.data();
+
+    match image_cell_abi::ImageCellCalls::decode(tx_data) {}
+    ...
+}
  ```
  ### Store Transaction Data
 
@@ -121,7 +126,8 @@ The data storage format for CKB cell is as follows:
 | OutPoint (36 Bytes) | CellInfo (Bytes) |
 - key: 32 bytes tx hash + 4 bytes output index (u32 as little endian bytes)
 - value: CellInfo
-```
+
+```rust
 struct CellInfo {
     pub cell_output:     Bytes, // ckb_types::packed::CellOutput
     pub cell_data:       Bytes,
@@ -132,7 +138,7 @@ struct CellInfo {
 
 Once the decoded transaction data is stored in the ICSC MPT, a new MPT root will be generated automatically. This root is then stored in the ICSC account, providing a tamper-evident record of the transaction data.
 
-## Footnotes
+### Footnotes
 
 [^1]: Axon contains two types of contracts: general contracts and system contracts. The main difference is that system contracts are written in Rust only. Compared with general contracts, system contracts can invoke more system resources, such as storage. Besides, system contracts are not necessarily stored in EVM MPT, since they have their own storage space.
 [^2]: As a third-party component, IBC Relayer is decentralized and trustless, so we adopted it in our project.

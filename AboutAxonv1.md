@@ -1,14 +1,10 @@
 # About Axon
 
-Axon is a multi-chain framework that handles thousands of TPS. Built on top of the Common Knowledge Base (CKB), layer 1 of the Nervos Network, Axon enables seamless communication across blockchain networks with its native cross-chain function. It is developer-friendly and highly scalable, connecting your projects with the most thriving blockchain ecosystems nowadays.
-
-
+Axon is a multi-chain framework that handles thousands of TPS. Built on top of the Common Knowledge Base (CKB), Layer 1 of the Nervos Network, Axon enables seamless communication across blockchain networks with its native cross-chain function. It is developer-friendly and highly scalable, connecting your projects with the most thriving blockchain ecosystems nowadays.
 
 ## Why Build With Axon?
 
 Axon was created to help web3 builders quickly transform their ideas into reality. Whatever you’re building, whether it’s GameFi, DeFi, or NFT, your project should be scalable and cost-effective to deploy.
-
-
 
 ### High TPS
 
@@ -16,21 +12,15 @@ Axon uses a new Byzantine Fault Tolerance (BFT) based consensus algorithm called
 
 This parallel execution supports over 3000 TPS (Transaction Per Second) across hundreds of nodes, with a transaction delay of less than a few seconds.
 
-
-
 ### Easy-to-Deploy
 
 Axon provides a full-fledged toolkit that enables web 3 developers to start building right away without having to understand the fundamentals. Designed with a different approach than Relayers, Axon automates off-chain communication, thereby significantly reducing deployment costs.
 
 The hands-on tutorial *Zero to Axon with Axon-cli* teaches you how to build a chain from scratch in less than 15 minutes.
 
-
-
 ### Highly Interoperable
 
 Axon will soon be fully compatible with Inter-Blockchain Communication (IBC)—the gateway to the Cosmos ecosystem, and later with all EVM-based blockchains. In addition to these top two thriving networks, Axon will be continually onboarding more protocols.
-
-
 
 ### Here’s how we do it
 
@@ -38,8 +28,6 @@ Axon will soon be fully compatible with Inter-Blockchain Communication (IBC)—t
 - Overload Consensus
 - P2P Network
 - Mempool
-
-
 
 **CKB-VM**
 
@@ -49,8 +37,6 @@ CKB Virtual Machine (CKB-VM) is the software implementation of the RISC-V instru
 
   https://github.com/nervosnetwork/ckb-vm
 
-
-
 **Overload Consensus**
 
 Overload is a BFT consensus algorithm that supports over 3000 TPS across hundreds of nodes, with a transaction delay of less than a few seconds. By decoupling transaction sequence from state consensus, Overload consensus enables execution and consensus process to run in parallel.
@@ -58,8 +44,6 @@ Overload is a BFT consensus algorithm that supports over 3000 TPS across hundred
 - Explore more
 
   https://github.com/nervosnetwork/overlord
-
-
 
 **P2P Network**
 
@@ -69,25 +53,17 @@ The network of Axon is developed on top of Tentacle, a multi-layered P2P protoco
 
   https://blog.cryptape.com/tentacle-the-network-layer-of-ckb
 
-
-
 **Mempool**
 
 Mempool is Axon's memory pool that performs several validations before transactions are allowed access to the pool. When a large number of transactions arrive, they are divided into four queues in the mempool to prevent TPS from exceeding the upper limit of the block intervals.
 
-
-
 # II For DApp Devs
-
-
 
 ## *Zero to Axon with Axon-cli*
 
 Axon-cli is an all-in-one client that enables operating Axon fast and easy. It contains initialization, DevOps, and cross-chain requests, among other functions.
 
 *Zero to Axon with Axon-cli* is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
-
-
 
 ### Install Axon-cli From GitHub
 
@@ -133,8 +109,6 @@ $ `systemctl restart docker.service`
 
 $ `cp -r devtools ~/.axon/`
 
-
-
 ### Build Axon-cli Binary
 
 Under the axon-cli directory, run the following command:
@@ -143,8 +117,6 @@ $ `cargo build --release`
 
 Now your basic Axon-cli development environment is ready.
 
-
-
 ### Run Axon-cli
 
 Enter the axon-cli interface by run the following command:
@@ -152,8 +124,6 @@ Enter the axon-cli interface by run the following command:
 $ `../target/release/axon-cli`
 
 Quit axon-cli interface by command `ctrl C`.
-
-
 
 ### Run Command Lines
 
@@ -181,8 +151,6 @@ For instance, when the start command is `axon start -d=devtools/chain`,  `axon d
 
 `bm` refers to benchmark. Start benchmark, so that transactions will be sent to the nodes. You must specify benchmark directory `--data-dir` , such as `axon bm --data-dir=/home/user/git/axon-devops/benchmark/benchmark`.
 
-
-
 ### Check Status
 
 Check status by running the following commands:
@@ -193,8 +161,6 @@ Check status by running the following commands:
 
 ![liveness status](/Users/sss/Downloads/liveness status.png)
 
-
-
 2. **Check the logs**
 
 > $ `docker logs axon4 | grep height`
@@ -204,8 +170,6 @@ Return:
 ![logs status](/Users/sss/Downloads/logs status.png)
 
 Logs contain useful information, such as block height (472 in this case), which will increase over time.
-
-
 
 3. **Check network connection between nodes**
 
@@ -222,8 +186,6 @@ $ `apt install iputils-ping`
 or `netstat -tnp | grep axon` that shows 3 other nodes like following:
 
 > root@6f816d8be4b7:/app# netstat -tnp | grep axontcp 0 0 172.18.0.3:8001 172.18.0.2:8001 ESTABLISHED 1/./axontcp 0 0 172.18.0.3:8001 172.18.0.5:8001 ESTABLISHED 1/./axontcp 0 0 172.18.0.3:8001 172.18.0.4:8001 ESTABLISHED 1/./axon
-
-
 
 4. **Start benchmark**
 
@@ -253,13 +215,9 @@ benchmark time: 64650.558417998254 mstransaction count: 7200TPS: 111.36794756587
 
 /////////////////////////////////////////////////////
 
-
-
 5**. Start `apm`**
 
 `apm` refers to Application Performance Management. Use `apm start` and `apm stop` commands to start and stop apm features respectively.
-
-
 
 **Step 1 Customize config files**
 
@@ -297,8 +255,6 @@ To clean the data, use: `apm clean -p=/home/user/git/axon-cli/apm`.
 
 `apm start` may take a few minutes to complete due to heavy background processes.
 
-
-
 After the setting up the right config and successfully starting `apm`, you can access the data-visualization platform Grafana by visiting `localhost:8600` in your browser.
 
 Now you can see the `axon-node` Dashboard displayed as below. Grafana provides time range control which is 7 days by default. Click on the time units on the top navbar to change the range. (I select **Last 1 hour** as shown below.)
@@ -311,8 +267,6 @@ You can also view the benchmark in the Dashboard `axon-benchmark` displayed as b
 
 ![dash3 benchmark](/Users/sss/Downloads/dash3 benchmark.png)
 
-
-
 ## Related Topics
 
 ### Axon & CKB
@@ -320,8 +274,6 @@ You can also view the benchmark in the Dashboard `axon-benchmark` displayed as b
 Axon repository on GitHub : https://github.com/axonweb3/axon
 
 CKB docs and technical reference: https://docs.nervos.org/
-
-
 
 ### Deploy EVM DApps
 
