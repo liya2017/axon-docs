@@ -233,8 +233,7 @@ structs
 ABI
 CellInfo
 CellOutput
-trsutless
+trustless
 xf
 uncreated
-trustless
 solc
