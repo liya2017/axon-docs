@@ -12,7 +12,7 @@ Common Knowledge Base (CKB) is the base layer of Nervos, a multi-layered blockch
 
 So, how to access CKB cells on Axon? One option is to connect to CKB every time to locate cells. However, this approach is not optimal as it decreases throughput due to network latency and the time-consuming cell indexing process. Instead, Axon maintains a system contract [^1] to store the required CKB cells only, so that applications on Axon can access CKB cells through this contract. Since it functions similarly to creating an image of CKB cells, this contract is named **Image Cell System Contract**, or **ICSC** for short.
 
-As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/), a Modified Merkle Patricia Trie, to provide a persistent data structure for storing all (key, value) bindings. Additionally, ICSC has built a separate MPT, known as ICSC MPT, to save the space in the EVM MPT. And just leave the root of ICSC MPT in the EVM MPT.
+As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/), a Modified Merkle Patricia Trie, to provide a persistent data structure for storing all (key, value) bindings. Additionally, ICSC has built a separate MPT, known as ICSC MPT, to save the space in the EVM MPT. Simply leave the root of ICSC MPT in the EVM MPT.
 
 ## Developer Tutorial: Accessing CKB Cells Stored in ICSC
 
