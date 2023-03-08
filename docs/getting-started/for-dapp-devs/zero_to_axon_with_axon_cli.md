@@ -1,48 +1,48 @@
 ---
-title: Zero to Axon with Axon-cli
+title: Zero to Axon with Axon-CLI
 hide_title: true
 sidebar_position: 1
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Zero to Axon with Axon-cli
+## Zero to Axon with Axon-CLI
 
-Axon-cli is an all-in-one client that makes operating Axon fast and easy. It contains initialization, DevOps, and cross-chain requests, among other functions.
+Axon-CLI is an all-in-one command-line interface that makes operating Axon fast and easy. It contains initialization, DevOps, and cross-chain requests, among other functions.
 
-**Zero to Axon with Axon-cli** is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
+**Zero to Axon with Axon-CLI** is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
 
 ### Requirement
 
-Axon-cli heavily relies on `docker`, make sure that you have installed it. To run `apm`, `ansible-playbook` is also required.
+Axon-CLI heavily relies on `docker`, make sure that you have installed it. To run `apm`, `ansible-playbook` is also required.
 
-### Install Axon-cli From GitHub
+### Install Axon-CLI From GitHub
 
-Start by cloning Axon-cli from the [GitHub repo](https://github.com/axonweb3/axon-cli) by command:
+Start by cloning Axon-CLI from the [GitHub repo](https://github.com/axonweb3/axon-cli) by command:
 
 ```bash
 git clone https://github.com/axonweb3/axon-cli.git
 ```
 
-Enter into Axon-cli directory
+Enter into Axon-CLI directory
 
 ```bash
 cd axon-cli
 ```
 
-Under the Axon-cli directory, run the following command to build binary:
+Under the Axon-CLI directory, run the following command to build binary:
 
 ```bash
 cargo build --release
 ```
 
-Now your basic Axon-cli development environment is ready. Enter the Axon-cli interface by running the following command:
+Now your basic Axon-CLI development environment is ready. Enter the Axon-CLI interface by running the following command:
 
 ```bash
 ./target/release/axon-cli
 ```
 
-To quit Axon-cli, use `Ctrl` + `C`.
+To quit Axon-CLI, use `Ctrl` + `C`.
 
 ### Managing Axon nodes
 
