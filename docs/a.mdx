@@ -1,0 +1,40 @@
+---
+slug: /
+title: Why Build With Axon
+position: 1
+sidebar_position: 1
+---
+
+Axon is a Proof-of-Stake (Pos) framework that enables developers to build app-chains as Layer 2 of CKB network. It provides a secure and efficient way of interacting with multiple participants in the network. Axon relies on a set of key concepts that underpin its operation and the various participants in its economic ecosystem. This essay contains two lists: one summarizes the key concepts; the other outlines the roles of the participants.
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+<img src={useBaseUrl('/img/axon.png')}/>
+
+
+
+## Key Concepts
+- Application: The decentralized applications that are deployed on Axon.
+- Axon Token (AT): An abbreviation for the User Defined Token (UDT) issued on CKB corresponding to the chain built with Axon.
+- [Cell](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md#42-cell): The primary state units in CKB, within which users can include arbitrary states.
+- Checkpoint: The latest status of Axon, such as state root, block hash, proposal count, and BLS signature. These status is submitted by an Axon node to a kicker at the end of each period and stored in the checkpoint cell in CKB.
+- [CKB](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md): The underlying Layer 1 of Axon.
+- CKB Light Client System Contract: A system contract in Axon that receives CKB block headers from the emitter and stores them in the same MPT with ICSC.
+- Cross-Chain Contract: A contract that records the cross-chain states and dispatch the cross-chain messages transmitted by Force Relay.
+- Epoch: The tenure of a validator set.
+- Image Cell System Contract (ICSC): A system contract in Axon that receives cells sent by the emitter which will be explained next and stores them in a Merkle Patricia Tree (MPT).
+- Metadata: The essential information about Axon, such as the list of validators and consensus configuration. Metadata is stored in metadata cell in CKB and is updated at the start of each epoch.
+- Period: A preset interval after which one of the validators must submit the latest Axon state to CKB.
+- Quorum: the max number of Axon validators in an epoch.
+- [Type/Lock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md#42-cell): Two kinds of scripts, type and lock, that are executed in CKB-VM. A`type` script is executed  when a cell is created in a transaction output, to guarantee that the state in the cell is valid under specific rules. A`lock` script is executed when the cell is referenced by a transaction input, to make sure the user has appropriate permissions to update or transfer the cell. If the execution of the lock script returns true, the user is allowed to transfer the cell or update its data according to validation rules that are specified by the `type` script.
+
+## Participants
+- Delegator: Participants who delegate their tokens to stakers they choose, to increase the latter’s chance to be selected as the validators.
+- Emitter: A standalone program that can emit CKB block headers and some specified cells to Axon via Forcerelay.
+- Forcerelay: A relayer that facilitates the transmission of messages from one network to another in the CKB ecosystem. The message schema follows the Inter-Blockchain Communication (IBC) protocol.
+- Kicker: A permissionless role that performs the following function:
+  - Relays the out point of the latest metadata cell to Axon, and the latest checkpoint to CKB.
+  - Updates the metadata through subscribing the checkpoint cell in CKB.
+  - Updates the reward cell to unlock rewards.
+- Seeder: The founder, who can create AT, initialize the Axon chain, and adjust some metadata with signed scripts.
+- Staker: Participants who intend to become validators. They stake Axon Token (AT) into the *stake type script*, either with their own tokens or with delegated tokens via *delegate type script*.
+- Validator: Participants in Axon’s consensus that are elected from stakers. The set of validators is selected as the top quorum stakers corresponding to the current epoch. The selection logic is defined in *metadata type script*. The validator set changes every epoch.
