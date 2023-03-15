@@ -9,13 +9,7 @@
                 <a href="https://twitter.com/AxonWeb3">
                     <img src="/img/twitter_${theme}.svg" alt="Twitter"/>
                 </a>
-                <a href="https://github.com/axonweb3/axon">
-                    <img src="/img/telegram_${theme}.svg" alt="Telegram"/>
-                </a>
-                <a href="https://github.com/axonweb3/axon">
-                    <img src="/img/linkedin_${theme}.svg" alt="LinkedIn"/>
-                </a>
-                <a href="https://github.com/axonweb3/axon">
+                <a href="https://medium.com/@axon_web3">
                     <img src="/img/medium_${theme}.svg" alt="Medium"/>
                 </a>
                 `;
