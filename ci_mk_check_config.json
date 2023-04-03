@@ -1,0 +1,10 @@
+{
+    "ignorePatterns": [
+      {
+        "pattern": "^http://172.17.0.1:8000"
+      },
+      {
+        "pattern": "http://localhost*"
+      }
+    ]
+}

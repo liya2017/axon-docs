@@ -67,7 +67,7 @@ Axon-cli is an all-in-one client that enables operating Axon fast and easy. It c
 
 ### Install Axon-cli From GitHub
 
-1. Start by cloning the Axon-cli GitHub repo from [GitHub](https://github.com/axonweb3/axon-devops/tree/main/axon-cli)
+<!-- 1. Start by cloning the Axon-cli GitHub repo from [GitHub](https://github.com/axonweb3/axon-devops/tree/main/axon-cli) -->
 
 $ `git clone git@github.com:axonweb3/axon-cli.git`
 
@@ -260,8 +260,8 @@ After the setting up the right config and successfully starting `apm`, you can a
 Now you can see the `axon-node` Dashboard displayed as below. Grafana provides time range control which is 7 days by default. Click on the time units on the top navbar to change the range. (I select **Last 1 hour** as shown below.)
 
 ![dash1 last 1 hour](/Users/sss/Downloads/dash1 last 1 hour.png)
-
-![dash2](/Users/sss/Downloads/dash2.png)
+<!-- 
+![dash2](/Users/sss/Downloads/dash2.png) -->
 
 You can also view the benchmark in the Dashboard `axon-benchmark` displayed as below.
 
