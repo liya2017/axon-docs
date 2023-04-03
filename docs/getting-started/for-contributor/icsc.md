@@ -72,7 +72,7 @@ This article focuses on the storage of CKB cells in Axon, that is ICSC, and will
 
 The Forcerelay sends ETH transactions to Axon, which packs CKB cells.
 
-To view the transaction details, let's examine the [definition](https://github.com/axonweb3/axon/blob/main/core/executor/src/system_contract/image_cell/contract/contracts/ImageCell.sol) of ICSC.
+<!-- To view the transaction details, let's examine the [definition](https://github.com/axonweb3/axon/blob/main/core/executor/src/system_contract/image_cell/contract/contracts/ImageCell.sol) of ICSC. -->
 
 ```solidity
 contract ImageCell {
